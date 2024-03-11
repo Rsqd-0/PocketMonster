@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Mover : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Transform mesh;
+
+    private void Awake()
     {
-        
+        mesh = transform.GetChild(0);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move(Vector3 direction)
     {
-        
+        gameObject.transform.position += direction;
+    }
+
+    public void LookAt(Vector3 target)
+    {
+        mesh.LookAt(target);
     }
 }
