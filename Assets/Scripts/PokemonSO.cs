@@ -4,15 +4,15 @@ using UnityEngine;
 
     public enum Type
     {
-        Dark,
-        Psy,
-        Fight,
+        Arcane,
+        Time,
+        Cosmic,
     }
 [CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create new Pokemon")]
 public class PokemonSO : ScriptableObject
 {
     
-    public string name;
+    public new string name;
     public int hp;
     public int attack;
     public int defense;

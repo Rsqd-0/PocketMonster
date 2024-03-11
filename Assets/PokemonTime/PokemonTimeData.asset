@@ -17,4 +17,4 @@ MonoBehaviour:
   attack: 0
   defense: 0
   speed: 0
-  type: 0
+  type: 1
