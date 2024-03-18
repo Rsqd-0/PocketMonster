@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 94678561503be5049855d81fcb062438, type: 2}
     - target: {fileID: 6312905654957243599, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
       propertyPath: m_Name
-      value: PokemonDark
+      value: PokemonCosmic
       objectReference: {fileID: 0}
     - target: {fileID: 7215484016259865692, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
       propertyPath: m_LocalPosition.x

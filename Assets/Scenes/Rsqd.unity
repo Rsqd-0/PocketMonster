@@ -207,6 +207,10 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3123054167018029884, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: -2028646882505035520, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
       propertyPath: speed
       value: 8
@@ -706,6 +710,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 356041492}
   rotateSpeed: 5
+--- !u!1001 &2094976487
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.380193
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.170388
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5142657
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.8576309
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 118.103
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341978999119733396, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
+      propertyPath: m_Name
+      value: PokemonCosmic
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7f2d600ba83d1c147b08b69e7fa9284d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -715,3 +776,4 @@ SceneRoots:
   - {fileID: 1860149043}
   - {fileID: 45544693}
   - {fileID: 24007368}
+  - {fileID: 2094976487}
