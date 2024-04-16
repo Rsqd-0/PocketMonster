@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PotionSO : MonoBehaviour
+[CreateAssetMenu(menuName = "Items/Create new potion")]
+public class PotionSO : ItemSO
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int hpAmount;
+    public bool revive;
 }
