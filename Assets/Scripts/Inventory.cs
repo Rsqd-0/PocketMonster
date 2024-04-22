@@ -6,6 +6,11 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<ItemSlot> items;
+
+    public static Inventory GetInventory()
+    {
+        return FindObjectOfType<PlayerController>().GetComponent<Inventory>();
+    }
 }
 
 [Serializable]

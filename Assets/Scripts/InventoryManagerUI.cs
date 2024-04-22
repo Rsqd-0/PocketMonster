@@ -1,18 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryManagerUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject itemList;
+    [SerializeField] private ItemSlotUI itemSlotUI;
+
+    private Inventory inventory;
+
+    void Awake()
     {
-        
+        inventory = Inventory.GetInventory();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        UpdateItemList();
+    }
+
+    void UpdateItemList()
+    {
+        //pour tous les enfants de itemList, il faut soit update le count (si l'obj est déjà là) soit créer l'objet
     }
 }
