@@ -24,5 +24,6 @@ public class InventoryManagerUI : MonoBehaviour
     void UpdateItemList()
     {
         //pour tous les enfants de itemList, il faut soit update le count (si l'obj est déjà là) soit créer l'objet
+        
     }
 }
