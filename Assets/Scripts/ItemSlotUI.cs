@@ -11,10 +11,14 @@ public class ItemSlotUI : MonoBehaviour
     [SerializeField] private TMP_Text nameUI;
     [SerializeField] private TMP_Text countUI;
 
-    public void Set(ItemSO itemToSet, int countToSet)
+    public TMP_Text NameUI => nameUI;
+
+    public void Set(ItemSlot itemToSet)
     {
-        item = itemToSet;
-        count = countToSet;
+        item = itemToSet.Item;
+        nameUI.text = item.name;
+        count = itemToSet.Count;
+        countUI.text = $"x " + count;
     }
 
     public void UpdateUI()
