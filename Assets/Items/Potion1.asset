@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Potion1
   m_EditorClassIdentifier: 
   name: Basic potion
-  description: A cheap potion that heals 20 hp to any pokemon. Doesn't revive.
-  icon: {fileID: 0}
+  description: A cheap potion that heals 20 hp to your current pokemon. Doesn't revive.
+  icon: {fileID: 21300000, guid: 2e0884afe196f2f4696cfe1b1773898e, type: 3}
   hpAmount: 20
   revive: 0
