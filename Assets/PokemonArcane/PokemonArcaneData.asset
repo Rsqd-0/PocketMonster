@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07da8e7383facd47bba3a7559216ad6, type: 3}
   m_Name: PokemonArcaneData
   m_EditorClassIdentifier: 
-  name: 
+  name: merlinmon
   hp: 10
   attack: 3
   defense: 4
