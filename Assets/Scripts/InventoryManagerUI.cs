@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -10,13 +11,26 @@ using UnityEngine.UI;
 public class InventoryManagerUI : MonoBehaviour
 {
     [SerializeField] private GameObject parent;
-    [SerializeField] private List<ItemSlotUI> itemList;
+    [SerializeField] private GameObject parent2;
+    [SerializeField] private GameObject inventoryMenu;
+    [SerializeField] private GameObject pokemonMenu;
+    
+    private List<ItemSlotUI> itemList = new List<ItemSlotUI>();
     [SerializeField] private ItemSlotUI itemSlotUI;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TMP_Text description;
     
+    private List<PokemonSlotUI> pokemonList = new List<PokemonSlotUI>();
+    [SerializeField] private PokemonSlotUI pokemonSlotUI;
+    [SerializeField] private Image pokemonIcon;
+    [SerializeField] private TMP_Text characteristics;
+    
     private int selectedItem = 0;
+    private int selectedPokemon = 0;
+    private int currentPokemon = 0;
     private Inventory inventory;
+    private bool inventoryOpened;
+    private bool pokemonOpened;
 
     void Awake()
     {
@@ -43,6 +57,14 @@ public class InventoryManagerUI : MonoBehaviour
             itemList.Add(slotObj);
         }
         UpdateItemSelection();
+        foreach (var pokemon in inventory.Pokemons)
+        {
+            var slotPkm = Instantiate(pokemonSlotUI, parent2.transform);
+            slotPkm.gameObject.SetActive(true);
+            slotPkm.Set(pokemon);
+            pokemonList.Add(slotPkm);
+        }
+        UpdatePokemonSelection();
     }
 
     void UpdateItemList()
@@ -50,17 +72,55 @@ public class InventoryManagerUI : MonoBehaviour
         //l'update est lancée quand on ajoute un obj, ou quand on utilise un obj
     }
 
+    void UpdatePokemonList()
+    {
+        
+    }
+
     public void HandleUpdate()
     {
-        int prevSelection = selectedItem;
+        if (Input.GetKey(KeyCode.I)) inventoryOpened = true;
+        if (Input.GetKey(KeyCode.P)) pokemonOpened = true;
+        if (inventoryOpened)
+        {
+            pokemonOpened = false;
+            inventoryMenu.SetActive(true);
+            int prevSelection = selectedItem;
 
-        if (Input.GetKeyDown(KeyCode.DownArrow)) ++selectedItem;
-        else if (Input.GetKeyDown(KeyCode.UpArrow)) --selectedItem;
+            if (Input.GetKeyDown(KeyCode.DownArrow)) ++selectedItem;
+            else if (Input.GetKeyDown(KeyCode.UpArrow)) --selectedItem;
 
-        selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Items.Count - 1);
+            selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Items.Count - 1);
 
-        if (prevSelection != selectedItem) UpdateItemSelection();
-        //if (Input.GetKeyDown(KeyCode.X)) onBack?.Invoke();
+            if (prevSelection != selectedItem) UpdateItemSelection();
+            //if (Input.GetKeyDown(KeyCode.X)) onBack?.Invoke();
+            if (Input.GetKeyDown(KeyCode.Escape)) inventoryOpened = false;
+        }
+        else
+        {
+            inventoryMenu.SetActive(false);
+        }
+
+        if (pokemonOpened)
+        {
+            inventoryOpened = false;
+            pokemonMenu.SetActive(true);
+            int prevSelection = selectedPokemon;
+            if (currentPokemon != selectedPokemon) pokemonList[currentPokemon].NameUI.color = Color.green;
+
+            if (Input.GetKeyDown(KeyCode.DownArrow)) ++selectedPokemon;
+            else if (Input.GetKeyDown(KeyCode.UpArrow)) --selectedPokemon;
+
+            selectedPokemon = Mathf.Clamp(selectedPokemon, 0, inventory.Pokemons.Count - 1);
+
+            if (prevSelection != selectedPokemon) UpdatePokemonSelection();
+            //if (Input.GetKeyDown(KeyCode.X)) onBack?.Invoke();
+            if (Input.GetKeyDown(KeyCode.Escape)) pokemonOpened = false; 
+        }
+        else
+        {
+            pokemonMenu.SetActive(false);
+        }
     }
 
     void UpdateItemSelection()
@@ -74,5 +134,17 @@ public class InventoryManagerUI : MonoBehaviour
         var slot = inventory.Items[selectedItem];
         itemIcon.sprite = slot.Item.icon;
         description.text = slot.Item.description;
+    }
+    void UpdatePokemonSelection()
+    {
+        for (int i = 0; i < pokemonList.Count; i++)
+        {
+            if (i == selectedPokemon) pokemonList[i].NameUI.color = Color.blue;
+            else pokemonList[i].NameUI.color = Color.white;
+        }
+
+        var slot = inventory.Pokemons[selectedPokemon];
+        //itemIcon.sprite = slot;
+        //description.text = slot.Item.description;
     }
 }

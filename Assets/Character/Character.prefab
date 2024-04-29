@@ -212,7 +212,12 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: c8a8a75eec710164dbe6e58841d39741, type: 2}
     count: 5
   - item: {fileID: 11400000, guid: f5486a5b3be7087448f980e8fe7065d9, type: 2}
-    count: 1
+    count: 2
+  pokemons:
+  - {fileID: 11400000, guid: 0dca1d1924f8aa042af508c5dcc3bab2, type: 2}
+  - {fileID: 11400000, guid: 31e1bbdbc4814344f8a2eef8c5618bcf, type: 2}
+  - {fileID: 11400000, guid: b2a17b756d12b9a40a7f24ef2986ba57, type: 2}
+  currentPokemon: {fileID: 0}
 --- !u!1 &7228650891589167871
 GameObject:
   m_ObjectHideFlags: 0

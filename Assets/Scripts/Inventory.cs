@@ -6,8 +6,13 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<ItemSlot> items;
+    [SerializeField] private List<PokemonSO> pokemons;
+    [SerializeField] private GameObject currentPokemon;
 
     public List<ItemSlot> Items => items;
+    public List<PokemonSO> Pokemons => pokemons;
+    public GameObject CurrentPokmeon => currentPokemon;
+    
     public static Inventory GetInventory()
     {
         return FindObjectOfType<PlayerController>().GetComponent<Inventory>();
