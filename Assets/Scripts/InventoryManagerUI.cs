@@ -106,7 +106,7 @@ public class InventoryManagerUI : MonoBehaviour
             inventoryOpened = false;
             pokemonMenu.SetActive(true);
             int prevSelection = selectedPokemon;
-            if (currentPokemon != selectedPokemon) pokemonList[currentPokemon].NameUI.color = Color.green;
+            if (currentPokemon != selectedPokemon) pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
 
             if (Input.GetKeyDown(KeyCode.DownArrow)) ++selectedPokemon;
             else if (Input.GetKeyDown(KeyCode.UpArrow)) --selectedPokemon;
