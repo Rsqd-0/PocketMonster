@@ -296,6 +296,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
+--- !u!114 &92135204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2984572714840895287, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+  m_PrefabInstance: {fileID: 202391518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &202391518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,6 +416,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202391520}
     - target: {fileID: 8573248705058775528, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: pokemonIcon
+      value: 
+      objectReference: {fileID: 857245450}
+    - target: {fileID: 8573248705058775528, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
       propertyPath: pokemonMenu
       value: 
       objectReference: {fileID: 202391519}
@@ -416,6 +431,10 @@ PrefabInstance:
       propertyPath: pokemonSlotUI
       value: 
       objectReference: {fileID: 825824401}
+    - target: {fileID: 8573248705058775528, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: characteristics
+      value: 
+      objectReference: {fileID: 92135204}
     - target: {fileID: 8748931810228362899, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -805,6 +824,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5256039647607043345, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
   m_PrefabInstance: {fileID: 202391518}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &857245450 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6424267746747041761, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+  m_PrefabInstance: {fileID: 202391518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &894098974
 PrefabInstance:
   m_ObjectHideFlags: 0

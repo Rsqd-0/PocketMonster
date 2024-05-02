@@ -70,11 +70,30 @@ public class InventoryManagerUI : MonoBehaviour
     void UpdateItemList()
     {
         //l'update est lancée quand on ajoute un obj, ou quand on utilise un obj
+        foreach (Transform child in parent.transform)
+            Destroy(child.gameObject);
+        foreach (var item in inventory.Items)
+        {
+            var slotObj = Instantiate(itemSlotUI, parent.transform);
+            slotObj.gameObject.SetActive(true);
+            slotObj.Set(item);
+            itemList.Add(slotObj);
+        }
+        UpdateItemSelection();
     }
 
     void UpdatePokemonList()
     {
-        
+        foreach (Transform child in parent2.transform)
+            Destroy(child.gameObject);
+        foreach (var pokemon in inventory.Pokemons)
+        {
+            var slotPkm = Instantiate(pokemonSlotUI, parent2.transform);
+            slotPkm.gameObject.SetActive(true);
+            slotPkm.Set(pokemon);
+            pokemonList.Add(slotPkm);
+        }
+        UpdatePokemonSelection();
     }
 
     public void HandleUpdate()
@@ -145,6 +164,7 @@ public class InventoryManagerUI : MonoBehaviour
 
         var slot = inventory.Pokemons[selectedPokemon];
         //itemIcon.sprite = slot;
-        //description.text = slot.Item.description;
+        characteristics.text = "HP: " + slot.hp + "\nAttack: " + slot.attack + "\nDefense: " + slot.defense + "\nSpeed: " +
+                           slot.speed;
     }
 }
