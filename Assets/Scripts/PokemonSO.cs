@@ -18,5 +18,6 @@ public class PokemonSO : ScriptableObject
     public int defense;
     public int speed;
     public Type type;
-    
+    public List<ItemSO> droppableItems;
+
 }
