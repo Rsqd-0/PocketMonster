@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -24,6 +25,8 @@ public class InventoryManagerUI : MonoBehaviour
     [SerializeField] private PokemonSlotUI pokemonSlotUI;
     [SerializeField] private Image pokemonIcon;
     [SerializeField] private TMP_Text characteristics;
+
+    [SerializeField] private TMP_Dropdown heals;
     
     private int selectedItem = 0;
     private int selectedPokemon = 0;
@@ -41,6 +44,7 @@ public class InventoryManagerUI : MonoBehaviour
     {
         CreateItemList();
         pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
+        UpdateDropdown();
     }
 
     private void Update()
@@ -96,6 +100,21 @@ public class InventoryManagerUI : MonoBehaviour
             pokemonList.Add(slotPkm);
         }
         UpdatePokemonSelection();
+    }
+
+    void UpdateDropdown()
+    {
+        List<ItemSlot> potions = inventory.Items.Where(slot => slot.Item is PotionSO && slot.Count > 0).ToList();
+        
+        List<TMP_Dropdown.OptionData> dropdownOptions = new List<TMP_Dropdown.OptionData>();
+        foreach (ItemSlot potionSlot in potions)
+        {
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(potionSlot.Item.name);
+            dropdownOptions.Add(option);
+        }
+        
+        heals.ClearOptions();
+        heals.AddOptions(dropdownOptions);
     }
 
     public void HandleUpdate()
@@ -184,5 +203,20 @@ public class InventoryManagerUI : MonoBehaviour
     {
         inventory.ModifyItem(inventory.Items[selectedItem].Item,-1);
         UpdateItemList();
+    }
+    
+    public void UseSelectedHeal()
+    {
+        int selectedIndex = heals.value;
+        List<ItemSlot> potions = inventory.Items.Where(slot => slot.Item is PotionSO && slot.Count > 0).ToList();
+
+        if (selectedIndex >= 0 && selectedIndex < potions.Count)
+        {
+            ItemSO potion = potions[selectedIndex].Item;
+            Debug.Log("Potion utilisée : " + potion.name);
+            inventory.ModifyItem(potion,-1);
+            UpdateItemList();
+            UpdateDropdown();
+        }
     }
 }
