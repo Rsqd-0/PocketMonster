@@ -155,6 +155,7 @@ public class InventoryManagerUI : MonoBehaviour
             if (prevSelection != selectedPokemon) UpdatePokemonSelection();
             //if (Input.GetKeyDown(KeyCode.X)) onBack?.Invoke();
             if (Input.GetKeyDown(KeyCode.Escape)) pokemonOpened = false; 
+            if (Input.GetKeyDown(KeyCode.Return)) SetCurrentPokemon();
         }
         else
         {

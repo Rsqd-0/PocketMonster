@@ -24,7 +24,7 @@ public class PannelUI : MonoBehaviour
         for (int i = 0; i < listPokemons.Count; i++)
         {
             pokemons[i].fontStyle =  FontStyles.Normal; 
-            pokemons[i].text = listPokemons[i].name;
+            pokemons[i].text = listPokemons[i].pokeName;
                 switch (listPokemons[i].type)
                 {
                     case Type.Arcane:

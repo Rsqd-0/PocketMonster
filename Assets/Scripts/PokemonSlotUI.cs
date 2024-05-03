@@ -17,7 +17,7 @@ public class PokemonSlotUI : MonoBehaviour
     public void Set(PokemonSO pokemonToSet)
     {
         pokemon = pokemonToSet;
-        nameUI.text = pokemon.name;
+        nameUI.text = pokemon.pokeName;
         typeUI.text = pokemon.type.ToString();
         switch (pokemon.type)
         {
