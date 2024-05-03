@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f07da8e7383facd47bba3a7559216ad6, type: 3}
-  m_Name: PokemonTimeData
+  m_Name: PokemonArcaneDataB
   m_EditorClassIdentifier: 
-  name: zilemon
-  hp: 12
-  attack: 5
-  defense: 2
-  speed: 20
-  type: 1
+  pokeName: Salamagie
+  hp: 7
+  attack: 4
+  defense: 4
+  speed: 5
+  type: 0
   droppableItems:
-  - {fileID: 11400000, guid: c8a8a75eec710164dbe6e58841d39741, type: 2}
+  - {fileID: 11400000, guid: f5486a5b3be7087448f980e8fe7065d9, type: 2}
