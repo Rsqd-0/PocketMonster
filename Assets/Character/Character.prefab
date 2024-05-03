@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: -3123054167018029884}
   - component: {fileID: -2646620755650102307}
   - component: {fileID: 6455522674303189070}
+  - component: {fileID: 614063977657990357}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -218,6 +219,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31e1bbdbc4814344f8a2eef8c5618bcf, type: 2}
   - {fileID: 11400000, guid: b2a17b756d12b9a40a7f24ef2986ba57, type: 2}
   currentPokemon: {fileID: 0}
+--- !u!136 &614063977657990357
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748207421784093464}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.085816
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9958863, z: 0}
 --- !u!1 &7228650891589167871
 GameObject:
   m_ObjectHideFlags: 0

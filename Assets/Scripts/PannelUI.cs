@@ -23,6 +23,7 @@ public class PannelUI : MonoBehaviour
         listPokemons = inventory.Pokemons;
         for (int i = 0; i < listPokemons.Count; i++)
         {
+            pokemons[i].fontStyle =  FontStyles.Normal; 
             pokemons[i].text = listPokemons[i].name;
                 switch (listPokemons[i].type)
                 {
@@ -39,6 +40,6 @@ public class PannelUI : MonoBehaviour
                         throw new ArgumentOutOfRangeException();
                 }
         }
-
+        pokemons[inventory.CurrentPokemon].fontStyle = FontStyles.Underline;
     }
 }

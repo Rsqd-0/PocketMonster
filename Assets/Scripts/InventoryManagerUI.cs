@@ -15,7 +15,7 @@ public class InventoryManagerUI : MonoBehaviour
     [SerializeField] private GameObject inventoryMenu;
     [SerializeField] private GameObject pokemonMenu;
     
-    private List<ItemSlotUI> itemList = new List<ItemSlotUI>();
+    [SerializeField] private List<ItemSlotUI> itemList = new List<ItemSlotUI>();
     [SerializeField] private ItemSlotUI itemSlotUI;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TMP_Text description;
@@ -40,6 +40,7 @@ public class InventoryManagerUI : MonoBehaviour
     private void Start()
     {
         CreateItemList();
+        pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
     }
 
     private void Update()
@@ -69,7 +70,7 @@ public class InventoryManagerUI : MonoBehaviour
 
     void UpdateItemList()
     {
-        //l'update est lancée quand on ajoute un obj, ou quand on utilise un obj
+        itemList.Clear();
         foreach (Transform child in parent.transform)
             Destroy(child.gameObject);
         foreach (var item in inventory.Items)
@@ -84,6 +85,7 @@ public class InventoryManagerUI : MonoBehaviour
 
     void UpdatePokemonList()
     {
+        pokemonList.Clear();
         foreach (Transform child in parent2.transform)
             Destroy(child.gameObject);
         foreach (var pokemon in inventory.Pokemons)
@@ -125,7 +127,6 @@ public class InventoryManagerUI : MonoBehaviour
             inventoryOpened = false;
             pokemonMenu.SetActive(true);
             int prevSelection = selectedPokemon;
-            if (currentPokemon != selectedPokemon) pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
 
             if (Input.GetKeyDown(KeyCode.DownArrow)) ++selectedPokemon;
             else if (Input.GetKeyDown(KeyCode.UpArrow)) --selectedPokemon;
@@ -166,5 +167,22 @@ public class InventoryManagerUI : MonoBehaviour
         //itemIcon.sprite = slot;
         characteristics.text = "HP: " + slot.hp + "\nAttack: " + slot.attack + "\nDefense: " + slot.defense + "\nSpeed: " +
                            slot.speed;
+    }
+
+    public void SetCurrentPokemon()
+    {
+        currentPokemon = selectedPokemon;
+        inventory.SetCurrentPokemon(selectedPokemon);
+        foreach (var names in pokemonList)
+        {
+            names.NameUI.fontStyle = FontStyles.Normal;
+        }
+        pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
+    }
+
+    public void Throw()
+    {
+        inventory.ModifyItem(inventory.Items[selectedItem].Item,-1);
+        UpdateItemList();
     }
 }
