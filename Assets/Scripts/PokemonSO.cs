@@ -12,7 +12,7 @@ using UnityEngine;
 public class PokemonSO : ScriptableObject
 {
     
-    public new string name;
+    public string pokeName;
     public int hp;
     public int attack;
     public int defense;

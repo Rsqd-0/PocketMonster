@@ -6,7 +6,7 @@ public class SettingsUI : MonoBehaviour
 {
     void Start()
     {
-        GetComponent<Game>().AddOnPauseListener(ToggleSelf);
+        //GetComponent<Game>().AddOnPauseListener(ToggleSelf);
     }
     
     private void ToggleSelf(bool active)
