@@ -74,7 +74,7 @@ public class InventoryManagerUI : MonoBehaviour
         UpdatePokemonSelection();
     }
 
-    void UpdateItemList()
+    public void UpdateItemList()
     {
         itemList.Clear();
         foreach (Transform child in parent.transform)
@@ -89,7 +89,7 @@ public class InventoryManagerUI : MonoBehaviour
         UpdateItemSelection();
     }
 
-    void UpdatePokemonList()
+    public void UpdatePokemonList()
     {
         pokemonList.Clear();
         foreach (Transform child in parent2.transform)

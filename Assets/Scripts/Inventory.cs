@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] private InventoryManagerUI inventoryManagerUI;
     [SerializeField] private List<ItemSlot> items;
     [SerializeField] private List<PokemonSO> pokemons;
     [SerializeField] private int currentPokemon;
@@ -27,13 +28,19 @@ public class Inventory : MonoBehaviour
     {
         return pokemons[currentPokemon];
     }
+
+    public void AddToInventory(ItemSO itemToAdd)
+    {
+        ModifyItem(itemToAdd,1);
+        inventoryManagerUI.UpdateItemList();
+    }
     
     public void ModifyItem(ItemSO item, int quantityToAdd)
     {
         ItemSlot itemSlot = items.FirstOrDefault(slot => slot.Item == item);
         if (itemSlot == null)
         {
-            itemSlot = new ItemSlot(item, 1);
+            itemSlot = new ItemSlot(item, 0);
             items.Add(itemSlot);
         }
 
