@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PokemonTimeDataA
   m_EditorClassIdentifier: 
   pokeName: Chronopuce
-  hp: 5
-  attack: 6
+  hp: 15
+  attack: 5
   defense: 3
   speed: 7
   type: 1

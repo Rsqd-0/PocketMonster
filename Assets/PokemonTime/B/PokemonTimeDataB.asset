@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PokemonTimeDataB
   m_EditorClassIdentifier: 
   pokeName: Pyraquart
-  hp: 7
+  hp: 26
   attack: 6
   defense: 2
   speed: 10

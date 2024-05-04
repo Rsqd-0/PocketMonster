@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PokemonCosmicDataA
   m_EditorClassIdentifier: 
   pokeName: Floralune
-  hp: 10
+  hp: 20
   attack: 3
   defense: 6
   speed: 3

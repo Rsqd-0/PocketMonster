@@ -5,12 +5,14 @@ using UnityEngine.Events;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField] private Spawner spawnerAreaA;
     private UnityEvent<bool> onPause = new UnityEvent<bool>();
 
     public static Game Instance;
 
     private void Awake()
     {
+        StartCoroutine(spawnerAreaA.StartSpawn("areaA"));
         if (Instance != null)
         {
             Destroy(gameObject);
