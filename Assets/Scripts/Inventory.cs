@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
     
     public static Inventory GetInventory()
     {
-        return FindObjectOfType<PlayerController>().GetComponent<Inventory>();
+        return FindObjectOfType<PlayerMovement>().GetComponent<Inventory>();
     }
     public void SetCurrentPokemon(int index)
     {

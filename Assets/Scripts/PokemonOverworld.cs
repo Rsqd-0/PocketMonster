@@ -7,7 +7,7 @@ public class PokemonOverworld : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out PlayerController player))
+        if (other.gameObject.TryGetComponent(out PlayerMovement player))
         {
             Debug.Log("Start Combat");
         }
