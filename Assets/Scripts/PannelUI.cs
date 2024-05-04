@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PannelUI : MonoBehaviour
 {
     [SerializeField] private List<TMP_Text> pokemons;
+    [SerializeField] private InventoryManagerUI inventoryManagerUI;
 
     private List<PokemonSO> listPokemons;
     private Inventory inventory;
@@ -18,7 +20,7 @@ public class PannelUI : MonoBehaviour
         UpdatePokemon();
     }
 
-    void UpdatePokemon()
+    public void UpdatePokemon()
     {
         listPokemons = inventory.Pokemons;
         for (int i = 0; i < listPokemons.Count; i++)
@@ -41,5 +43,16 @@ public class PannelUI : MonoBehaviour
                 }
         }
         pokemons[inventory.CurrentPokemon].fontStyle = FontStyles.Underline;
+    }
+    
+    public void OnPokemonClick(TMP_Text clickedText)
+    {
+        if (clickedText.text != "")
+        {
+            int index = pokemons.IndexOf(clickedText);
+            inventory.SetCurrentPokemon(index);
+            inventoryManagerUI.SetCurrentPokemon(index);
+            UpdatePokemon();
+        }
     }
 }

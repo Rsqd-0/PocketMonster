@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 public class InventoryManagerUI : MonoBehaviour
 {
+    [SerializeField] private PannelUI pannelUI;
+    
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject parent2;
     [SerializeField] private GameObject inventoryMenu;
@@ -119,8 +121,19 @@ public class InventoryManagerUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (Input.GetKey(KeyCode.I)) inventoryOpened = true;
-        if (Input.GetKey(KeyCode.P)) pokemonOpened = true;
+        if (Input.GetKey(KeyCode.I))
+        {
+            inventoryOpened = true;
+            pokemonOpened = false;
+        }
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            pokemonOpened = true;
+            inventoryOpened = false;
+        }
+        if (inventoryOpened || pokemonOpened) pannelUI.gameObject.SetActive(false);
+        if (!inventoryOpened && !pokemonOpened) pannelUI.gameObject.SetActive(true);
         if (inventoryOpened)
         {
             pokemonOpened = false;
@@ -155,7 +168,7 @@ public class InventoryManagerUI : MonoBehaviour
             if (prevSelection != selectedPokemon) UpdatePokemonSelection();
             //if (Input.GetKeyDown(KeyCode.X)) onBack?.Invoke();
             if (Input.GetKeyDown(KeyCode.Escape)) pokemonOpened = false; 
-            if (Input.GetKeyDown(KeyCode.Return)) SetCurrentPokemon();
+            if (Input.GetKeyDown(KeyCode.Return)) CurrentPokemon();
         }
         else
         {
@@ -189,15 +202,21 @@ public class InventoryManagerUI : MonoBehaviour
                            slot.speed;
     }
 
-    public void SetCurrentPokemon()
+    public void CurrentPokemon()
     {
-        currentPokemon = selectedPokemon;
-        inventory.SetCurrentPokemon(selectedPokemon);
+        SetCurrentPokemon(selectedPokemon);
+    }
+
+    public void SetCurrentPokemon(int index)
+    {
+        currentPokemon = index != selectedPokemon ? index : selectedPokemon;
+        inventory.SetCurrentPokemon(currentPokemon);
         foreach (var names in pokemonList)
         {
             names.NameUI.fontStyle = FontStyles.Normal;
         }
         pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
+        pannelUI.UpdatePokemon();
     }
 
     public void Throw()

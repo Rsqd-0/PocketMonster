@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AreaA
+  m_EditorClassIdentifier: 
+  m_GroupName: AreaA
+  m_Data:
+    m_SerializedData: []
+  m_GUID: db281bcff82b1494c82849eef7f856be
+  m_SerializeEntries:
+  - m_GUID: 477b44e25bf90574d98b563d20b579eb
+    m_Address: Assets/PokemonCosmic/B
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: caa18c708d42b9e4a8d9a09c6d0665b1
+    m_Address: Assets/PokemonArcane/A
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 71e4f46433c8a4f4d951667dfa268c0f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ecf9260df1c49bc44a1fa402ae6da405, type: 2}
+    - {fileID: 11400000, guid: fbe25c43558d1c04bb195559b67cbbfa, type: 2}

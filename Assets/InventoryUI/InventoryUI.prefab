@@ -2571,7 +2571,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8573248705058775528}
         m_TargetAssemblyTypeName: InventoryManagerUI, Assembly-CSharp
-        m_MethodName: SetCurrentPokemon
+        m_MethodName: CurrentPokemon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
