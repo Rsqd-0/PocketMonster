@@ -14,10 +14,14 @@ public class Unit : MonoBehaviour
     public Type type;
 
     public int lvl;
-    public int currentHp;
+    public float currentHp;
     public int buffCounter;
+    public int xP;
+
+    private int maxXP;
     private int baseAtk;
     private int baseDef;
+    
     
     private void Awake()
     {
@@ -32,7 +36,7 @@ public class Unit : MonoBehaviour
         baseDef = def;
     }
     
-    public bool TakeDamage(int damage)
+    public bool TakeDamage(float damage)
     {
         currentHp -= damage;
         
@@ -57,18 +61,24 @@ public class Unit : MonoBehaviour
 
     public void Buff()
     {
-        atk += baseAtk / 2;
+        atk += baseAtk * (buffCounter + 3) / 2;
         def += baseDef / 2;
     }
     
-    public void LevelUp()
+    public void XPGain(int xp)
     {
-        lvl++;
-        maxHp += 10;
-        currentHp = maxHp;
-        atk += 2;
-        def += 2;
-        spd += 2;
+        xP += xp;
+        if (xP >= maxXP)
+        {
+            lvl++;
+            maxHp += 10;
+            currentHp = maxHp;
+            atk += 2;
+            def += 2;
+            spd += 2;
+            xP = 0;
+            maxXP = lvl * 5;
+        }
     }
     
     

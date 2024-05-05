@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class PokemonOverworld : MonoBehaviour
 {
-    
+    private BattleSystem battleSystem;
     private Vector3 initialPosition;
     private float moveSpeed = 1f;
     private float movementRadius = 2f;
@@ -16,6 +18,7 @@ public class PokemonOverworld : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
+        
 
         StartCoroutine(RandomMovement());
     }
@@ -66,6 +69,8 @@ public class PokemonOverworld : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out PlayerMovement player))
         {
+            SaveData.SaveEnemyData(gameObject);
+            SceneManager.LoadScene("Fight", LoadSceneMode.Additive);
             Debug.Log("Start Combat");
         }
     }

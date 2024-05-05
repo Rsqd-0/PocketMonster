@@ -18,7 +18,7 @@ public class BattleHUD : MonoBehaviour
         pokemonHP.value = unit.currentHp;
     }
     
-    public void SetHP(int hp)
+    public void SetHP(float hp)
     {
         pokemonHP.value = hp;
     }

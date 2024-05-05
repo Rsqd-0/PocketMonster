@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public enum BattleState
 {
@@ -17,18 +19,22 @@ public enum BattleState
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField]private GameObject playerPrefab;
-    [SerializeField]private GameObject enemyPrefab;
-    [SerializeField]private Transform playerBattleStation;
+    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Transform playerBattleStation;
     [SerializeField] private Transform enemyBattleStation;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private BattleHUD playerHUD;
     [SerializeField] private BattleHUD enemyHUD;
     
+    private Inventory inventory;
+    private GameObject playerGO;
+    private GameObject enemyGO;
+    
     public BattleState state;
     
-    Unit playerUnit;
-    Unit enemyUnit;
+    public Unit playerUnit;
+    public Unit enemyUnit;
     
     // Start is called before the first frame update
     void Start()
@@ -39,25 +45,109 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetupBattle()
     {
-        GameObject playerGO = Instantiate(playerPrefab, playerBattleStation.position, playerBattleStation.rotation);
+        playerGO = Instantiate(playerPrefab, playerBattleStation.position, playerBattleStation.rotation);
         playerUnit = playerGO.GetComponent<Unit>();
         
-        GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation.position, enemyBattleStation.rotation);
+        enemyGO = Instantiate(SaveData.GetEnemyData(), enemyBattleStation.position, enemyBattleStation.rotation);
         enemyUnit = enemyGO.GetComponent<Unit>();
+        
         
         dialogueText.text = "A wild " + enemyUnit.pokeName + " approaches...";
         playerHUD.SetHud(playerUnit);
         enemyHUD.SetHud(enemyUnit);
+        
 
         yield return new WaitForSeconds(2f);
         
-        state = BattleState.PLAYERTURN;
+        if (SpeedCheck())
+        {
+            state = BattleState.PLAYERTURN;
+        }
+        else
+        {
+            state = BattleState.ENEMYTURN;
+        }
+        
         PlayerTurn();
     }
 
+    private void Update()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            Destroy(playerGO);
+            Destroy(enemyGO);
+            SceneManager.UnloadSceneAsync("Fight");
+        }
+    }
+
+
+    void EndBattle()
+    {
+        switch (state)
+        {
+            case BattleState.WON:
+                dialogueText.text = "You won the battle!";
+                SaveData.SetPlayerWon(true);
+                break;
+            case BattleState.LOST:
+                dialogueText.text = "You were defeated!";
+                SaveData.SetPlayerWon(false);
+                break;
+            case BattleState.ESCAPED:
+                dialogueText.text = "You ran away!";
+                SaveData.SetPlayerWon(false);
+                SceneManager.UnloadSceneAsync("Fight");
+                break;
+        }
+        playerUnit.XPGain(enemyUnit.lvl);
+        //Loot + XP + Level up + change scene
+    }
+    
+
+
+    #region Player  
+
+    void PlayerTurn()
+    {
+        dialogueText.text = "Choose an action:";
+    }
+    
+    IEnumerator PlayerHeal()
+    {
+        playerUnit.currentHp += playerUnit.def + Random.Range(-3,4);
+        playerHUD.SetHP(playerUnit.currentHp);
+        dialogueText.text = "You feel renewed strength!";
+
+        state = BattleState.ENEMYTURN;
+        yield return new WaitForSeconds(2f);
+
+        StartCoroutine(EnemyTurn());
+    }
+
+    IEnumerator PlayerBuff()
+    {
+        if (playerUnit.buffCounter < 6)
+        {
+            playerUnit.Buff();
+            playerUnit.buffCounter++;
+            dialogueText.text = "You feel stronger!";
+        }
+        else
+        {
+            dialogueText.text = "You don't feel any stronger!";
+        }
+
+        state = BattleState.ENEMYTURN;
+        yield return new WaitForSeconds(2f);
+
+        StartCoroutine(EnemyTurn());
+    }
+    
     IEnumerator PlayerAttack()
     {
-        bool isDead = enemyUnit.TakeDamage(playerUnit.atk + Random.Range(-3,3));
+        bool isDead = enemyUnit.TakeDamage( (playerUnit.atk + Random.Range(-3,3)) * EffectiveTypeCheck(playerUnit,enemyUnit) );
         enemyHUD.SetHP(enemyUnit.currentHp);
         dialogueText.text = "The attack was successful!";
         
@@ -75,25 +165,17 @@ public class BattleSystem : MonoBehaviour
             StartCoroutine(EnemyTurn());
         }
     }
-    
-    void EndBattle()
+
+    IEnumerator PlayerDistract()
     {
-        switch (state)
-        {
-            case BattleState.WON:
-                dialogueText.text = "You won the battle!";
-                break;
-            case BattleState.LOST:
-                dialogueText.text = "You were defeated!";
-                break;
-            case BattleState.ESCAPED:
-                dialogueText.text = "You ran away!";
-                SceneManager.LoadScene("Game");
-                break;
-        }
-        //Loot + XP + Level up + change scene
+        enemyUnit.Distracted();
     }
+
+    #endregion
+
     
+    #region Enemy
+
     IEnumerator EnemyTurn()
     {
         //Random sur les attaques de l'ennemi
@@ -119,8 +201,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = enemyUnit.pokeName + " attacks!";
         
         yield return new WaitForSeconds(1f);
-        //enemyUnit.atk + Random.Range(-3,3)
-        bool isDead = playerUnit.TakeDamage(enemyUnit.atk + Random.Range(-3,4));
+        bool isDead = playerUnit.TakeDamage( (enemyUnit.atk + Random.Range(-3,4)) * EffectiveTypeCheck(enemyUnit,playerUnit) );
         playerHUD.SetHP(playerUnit.currentHp);
         
         state = BattleState.PLAYERTURN;
@@ -169,41 +250,10 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
-    IEnumerator PlayerHeal()
-    {
-        playerUnit.currentHp += playerUnit.def + Random.Range(-3,4);
-        playerHUD.SetHP(playerUnit.currentHp);
-        dialogueText.text = "You feel renewed strength!";
-        
-        state = BattleState.ENEMYTURN;
-        yield return new WaitForSeconds(2f);
-        
-        StartCoroutine(EnemyTurn());
-    }
+    #endregion
     
-    IEnumerator PlayerBuff()
-    {
-        if (playerUnit.buffCounter < 6)
-        {
-            playerUnit.Buff();
-            playerUnit.buffCounter++;
-            dialogueText.text = "You feel stronger!";
-        }
-        else
-        {
-            dialogueText.text = "You don't feel any stronger!";
-        }
-        
-        state = BattleState.ENEMYTURN;
-        yield return new WaitForSeconds(2f);
-        
-        StartCoroutine(EnemyTurn());
-    }
     
-    void PlayerTurn()
-    {
-        dialogueText.text = "Choose an action:";
-    }
+    #region OnBtn   
 
     public void OnDamageAttack()
     {
@@ -234,4 +284,43 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.ESCAPED;
         EndBattle();
     }
+
+    public void OnDistractAttack()
+    {
+        if (state != BattleState.PLAYERTURN) return;
+        
+        StartCoroutine(PlayerDistract());
+    }
+
+    #endregion
+    
+
+    #region Check
+
+        private bool SpeedCheck()
+        {
+            return playerUnit.spd > enemyUnit.spd;
+        }
+
+        private float EffectiveTypeCheck(Unit attacker, Unit defender)
+        {
+            switch (attacker.type)
+            {
+                case Type.Arcane when defender.type == Type.Time:
+                case Type.Time when defender.type == Type.Cosmic:
+                case Type.Cosmic when defender.type == Type.Arcane:
+                    return 1.5f;
+                case Type.Time when defender.type == Type.Arcane:
+                case Type.Cosmic when defender.type == Type.Time:
+                case Type.Arcane when defender.type == Type.Cosmic:
+                    return 0.5f;
+                default:
+                    return 1f;
+            }
+        }
+    
+    #endregion
+   
 }
+
+
