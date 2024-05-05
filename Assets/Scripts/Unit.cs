@@ -17,10 +17,12 @@ public class Unit : MonoBehaviour
     public float currentHp;
     public int buffCounter;
     public int xP;
+    public List<ItemSO> lootTable;
 
     private int maxXP;
     private int baseAtk;
     private int baseDef;
+    
     
     
     private void Awake()
@@ -34,6 +36,7 @@ public class Unit : MonoBehaviour
         type = data.type;
         baseAtk = atk;
         baseDef = def;
+        lootTable = data.droppableItems;
     }
     
     public bool TakeDamage(float damage)
@@ -61,8 +64,14 @@ public class Unit : MonoBehaviour
 
     public void Buff()
     {
-        atk += baseAtk * (buffCounter + 3) / 2;
+        atk += baseAtk / 2;
         def += baseDef / 2;
+    }
+    
+    public void Distracted()
+    {
+        atk -= baseAtk / 3;
+        def -= baseDef / 3;
     }
     
     public void XPGain(int xp)

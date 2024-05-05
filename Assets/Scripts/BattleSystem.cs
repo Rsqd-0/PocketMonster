@@ -36,13 +36,18 @@ public class BattleSystem : MonoBehaviour
     public Unit playerUnit;
     public Unit enemyUnit;
     
-    // Start is called before the first frame update
+    /// <summary>
+    ///   <para>Start the battle</para>
+    /// </summary>
     void Start()
     {
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
-
+    
+    /// <summary>
+    ///   <para>Setup the battle phase</para>
+    /// </summary>
     IEnumerator SetupBattle()
     {
         playerGO = Instantiate(playerPrefab, playerBattleStation.position, playerBattleStation.rotation);
@@ -82,7 +87,9 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    ///   <para>Handle the what happens at this end of the battle</para>
+    /// </summary>
     void EndBattle()
     {
         switch (state)
@@ -90,6 +97,7 @@ public class BattleSystem : MonoBehaviour
             case BattleState.WON:
                 dialogueText.text = "You won the battle!";
                 SaveData.SetPlayerWon(true);
+                Inventory.GetInventory().AddToInventory(enemyUnit.lootTable[Random.Range(0,enemyUnit.lootTable.Count)]);
                 break;
             case BattleState.LOST:
                 dialogueText.text = "You were defeated!";
@@ -106,14 +114,21 @@ public class BattleSystem : MonoBehaviour
     }
     
 
-
+    // Region with the player's action
+    
     #region Player  
 
+    /// <summary>
+    ///   <para>Change text to show that the player can do an action</para>
+    /// </summary>
     void PlayerTurn()
     {
         dialogueText.text = "Choose an action:";
     }
     
+    /// <summary>
+    ///   <para>Heal the pokemon of the player</para>
+    /// </summary>
     IEnumerator PlayerHeal()
     {
         playerUnit.currentHp += playerUnit.def + Random.Range(-3,4);
@@ -126,6 +141,9 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(EnemyTurn());
     }
 
+    /// <summary>
+    ///   <para>Buff the pokemon of the player</para>
+    /// </summary>
     IEnumerator PlayerBuff()
     {
         if (playerUnit.buffCounter < 6)
@@ -145,6 +163,9 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(EnemyTurn());
     }
     
+    /// <summary>
+    ///   <para>Attack the enemy and test if the enemy is dead</para>
+    /// </summary>
     IEnumerator PlayerAttack()
     {
         bool isDead = enemyUnit.TakeDamage( (playerUnit.atk + Random.Range(-3,3)) * EffectiveTypeCheck(playerUnit,enemyUnit) );
@@ -166,20 +187,40 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///   <para>Debuff the enemy</para>
+    /// </summary>
     IEnumerator PlayerDistract()
     {
-        enemyUnit.Distracted();
+        if (playerUnit.buffCounter < 6)
+        {
+            enemyUnit.Buff();
+            enemyUnit.buffCounter--;
+            dialogueText.text = enemyUnit.pokeName + "feel weaker!";
+        }
+        else
+        {
+            dialogueText.text = enemyUnit.pokeName + "don't feel any weaker!";
+        }
+        
+        state = BattleState.ENEMYTURN;
+        yield return new WaitForSeconds(2f);
+
+        StartCoroutine(EnemyTurn());
     }
 
     #endregion
 
+    // Region with the enemy's action
     
     #region Enemy
 
+    /// <summary>
+    ///   <para>Randomly choose what action the enemy will do</para>
+    /// </summary>
     IEnumerator EnemyTurn()
     {
-        //Random sur les attaques de l'ennemi
-        int move = Random.Range(0, 4);
+        int move = Random.Range(0, 5);
 
         switch (move)
         {
@@ -190,12 +231,18 @@ public class BattleSystem : MonoBehaviour
             case 2:
                 yield return StartCoroutine(EnemyHeal());
                 break;
+            case 3:
+                yield return StartCoroutine(EnemyDistract());
+                break;
             default:
                 yield return StartCoroutine(EnemyBuff());
                 break;
         }
     }
     
+    /// <summary>
+    ///   <para>Attack the player's pokemon and test if the pokemon is dead</para>
+    /// </summary>
     IEnumerator EnemyAttack()
     {
         dialogueText.text = enemyUnit.pokeName + " attacks!";
@@ -219,6 +266,9 @@ public class BattleSystem : MonoBehaviour
         }
     }
     
+    /// <summary>
+    ///   <para>Heal the enemy</para>
+    /// </summary>
     IEnumerator EnemyHeal()
     {
         enemyUnit.currentHp += enemyUnit.def + Random.Range(-3,4);
@@ -231,6 +281,9 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
     
+    /// <summary>
+    ///   <para>Buff The enemy</para>
+    /// </summary>
     IEnumerator EnemyBuff()
     {
         if (enemyUnit.buffCounter < 6)
@@ -249,12 +302,35 @@ public class BattleSystem : MonoBehaviour
         
         PlayerTurn();
     }
+    
+    IEnumerator EnemyDistract()
+    {
+        if (enemyUnit.buffCounter < 6)
+        {
+            playerUnit.Buff();
+            playerUnit.buffCounter--;
+            dialogueText.text = playerUnit.pokeName + "feel weaker!";
+        }
+        else
+        {
+            dialogueText.text = playerUnit.pokeName + "don't feel any weaker!";
+        }
+        
+        state = BattleState.PLAYERTURN;
+        yield return new WaitForSeconds(2f);
+
+        PlayerTurn();
+    }
 
     #endregion
     
+    // Region with function used on buttons
     
     #region OnBtn   
 
+    /// <summary>
+    ///   <para>Damaging move is used</para>
+    /// </summary>
     public void OnDamageAttack()
     {
         if (state != BattleState.PLAYERTURN) return;
@@ -262,6 +338,9 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerAttack());
     }
     
+    /// <summary>
+    ///   <para>Heal move is used</para>
+    /// </summary>
     public void OnHealAttack()
     {
         if (state != BattleState.PLAYERTURN) return;
@@ -269,6 +348,9 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerHeal());
     }
     
+    /// <summary>
+    ///   <para>Buff move is used</para>
+    /// </summary>
     public void OnBuffAttack()
     {
         if (state != BattleState.PLAYERTURN) return;
@@ -276,6 +358,9 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerBuff());
     }
     
+    /// <summary>
+    ///   <para>Run button is used</para>
+    /// </summary>
     public void OnRunButton()
     {
         if (state != BattleState.PLAYERTURN) return;
@@ -285,6 +370,9 @@ public class BattleSystem : MonoBehaviour
         EndBattle();
     }
 
+    /// <summary>
+    ///   <para>Debuff button is used</para>
+    /// </summary>
     public void OnDistractAttack()
     {
         if (state != BattleState.PLAYERTURN) return;
@@ -294,33 +382,40 @@ public class BattleSystem : MonoBehaviour
 
     #endregion
     
-
+    // Region with function that checks thing
     #region Check
 
-        private bool SpeedCheck()
-        {
-            return playerUnit.spd > enemyUnit.spd;
-        }
+    /// <summary>
+    ///   <para>Check whose speed is higher</para>
+    /// </summary>
+    private bool SpeedCheck()
+    {
+        return playerUnit.spd > enemyUnit.spd;
+    }
 
-        private float EffectiveTypeCheck(Unit attacker, Unit defender)
+    /// <summary>
+    ///   <para>Test type effectiveness</para>
+    /// </summary>
+    private float EffectiveTypeCheck(Unit attacker, Unit defender)
+    {
+        switch (attacker.type)
         {
-            switch (attacker.type)
-            {
-                case Type.Arcane when defender.type == Type.Time:
-                case Type.Time when defender.type == Type.Cosmic:
-                case Type.Cosmic when defender.type == Type.Arcane:
-                    return 1.5f;
-                case Type.Time when defender.type == Type.Arcane:
-                case Type.Cosmic when defender.type == Type.Time:
-                case Type.Arcane when defender.type == Type.Cosmic:
-                    return 0.5f;
-                default:
-                    return 1f;
-            }
+            case Type.Arcane when defender.type == Type.Time:
+            case Type.Time when defender.type == Type.Cosmic:
+            case Type.Cosmic when defender.type == Type.Arcane:
+                return 1.5f;
+            case Type.Time when defender.type == Type.Arcane:
+            case Type.Cosmic when defender.type == Type.Time:
+            case Type.Arcane when defender.type == Type.Cosmic:
+                return 0.5f;
+            default:
+                return 1f;
         }
+    }
     
     #endregion
    
+    
 }
 
 
