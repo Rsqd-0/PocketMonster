@@ -72,44 +72,43 @@ public class BattleSystem : MonoBehaviour
         if (SpeedCheck())
         {
             state = BattleState.PLAYERTURN;
+            PlayerTurn();
         }
         else
         {
             state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
         }
         
-        PlayerTurn();
-    }
-
-    private void Update()
-    {
         
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            Destroy(playerGO);
-            Destroy(enemyGO);
-            SceneManager.UnloadSceneAsync("Fight");
-        }
     }
 
     /// <summary>
     ///   <para>Handle the what happens at this end of the battle</para>
     /// </summary>
-    void EndBattle()
+    IEnumerator EndBattle()
     {
         switch (state)
         {
             case BattleState.WON:
                 dialogueText.text = "You won the battle!";
+                yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(true);
-                Inventory.GetInventory().AddToInventory(enemyUnit.lootTable[Random.Range(0,enemyUnit.lootTable.Count)]);
+                ItemSO lootedItem = enemyUnit.lootTable[Random.Range(0,enemyUnit.lootTable.Count)];
+                Inventory.GetInventory().AddToInventory(lootedItem);
+                dialogueText.text = "You got " + lootedItem.name + "!";
+                yield return new WaitForSeconds(2f);
+                SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.LOST:
                 dialogueText.text = "You were defeated!";
+                yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(false);
+                SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.ESCAPED:
                 dialogueText.text = "You ran away!";
+                yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(false);
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
@@ -184,7 +183,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             state = BattleState.WON;
-            EndBattle();
+            StartCoroutine(EndBattle());
         }
         else
         {
@@ -263,7 +262,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             state = BattleState.LOST;
-            EndBattle();
+            StartCoroutine(EndBattle());
         }
         else
         {
@@ -315,11 +314,11 @@ public class BattleSystem : MonoBehaviour
         {
             playerUnit.Buff();
             playerUnit.buffCounter--;
-            dialogueText.text = playerUnit.pokeName + "feel weaker!";
+            dialogueText.text = playerUnit.pokeName + " feel weaker!";
         }
         else
         {
-            dialogueText.text = playerUnit.pokeName + "don't feel any weaker!";
+            dialogueText.text = playerUnit.pokeName + " don't feel any weaker!";
         }
         
         state = BattleState.PLAYERTURN;
@@ -371,9 +370,8 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.PLAYERTURN) return;
         
-        dialogueText.text = "You ran away!";
         state = BattleState.ESCAPED;
-        EndBattle();
+        StartCoroutine(EnemyTurn());
     }
 
     /// <summary>
