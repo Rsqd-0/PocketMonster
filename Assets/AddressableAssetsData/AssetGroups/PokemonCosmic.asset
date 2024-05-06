@@ -23,12 +23,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - areaA
     - cosmic
+    - areaC
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ce36225a02c73d248ab39d622799d2f4
     m_Address: Assets/PokemonCosmic/A
     m_ReadOnly: 0
     m_SerializedLabels:
     - cosmic
+    - baseCosmic
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 71e4f46433c8a4f4d951667dfa268c0f, type: 2}

@@ -137,7 +137,7 @@ public class BattleSystem : MonoBehaviour
     
     public Unit CapturePokemon(PokeballSO ball)
     {
-        float catchRate = (1 - 0.9f*(enemyUnit.currentHp / enemyUnit.maxHp)) * ball.bonusBall * enemyUnit.catchRate;
+        float catchRate = (1 - (enemyUnit.currentHp / enemyUnit.maxHp)) * ball.bonusBall * enemyUnit.catchRate;
         float random = Random.Range(0f, 1f);
         if (random < catchRate)
         {

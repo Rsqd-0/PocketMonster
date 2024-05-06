@@ -10,11 +10,12 @@ public class Spawner : MonoBehaviour
 {
     private AsyncOperationHandle<IList<GameObject>> loadHandle;
     private UnityEvent<GameObject> onSpawn = new UnityEvent<GameObject>();
-
-    // Ajoutez une étiquette en paramètre pour choisir quel groupe d'adressables charger
+    private GameObject enemy;
+    private bool spawned = false;
+    private int spawningDelay = 1;
+    
     public IEnumerator StartSpawn(string label)
     {
-        // Charge les actifs selon l'étiquette spécifiée
         loadHandle = Addressables.LoadAssetsAsync<GameObject>(label, null);
         loadHandle.Completed += (operation) => { StartCoroutine(SpawnEnemy()); };
 
@@ -33,10 +34,21 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(spawningDelay);
 
         var enemyPrefab = loadHandle.Result[Random.Range(0, loadHandle.Result.Count)];
-        var enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity, transform);
+        enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity, transform);
+        spawned = true;
         onSpawn.Invoke(enemy);
+    }
+
+    void Update()
+    {
+        if (spawned && enemy == null)
+        {
+            spawningDelay = 7;
+            spawned = false;
+            StartCoroutine(SpawnEnemy());
+        }
     }
 }

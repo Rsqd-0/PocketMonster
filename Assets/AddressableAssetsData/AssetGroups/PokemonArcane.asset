@@ -22,12 +22,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - arcane
+    - areaA
+    - areaB
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: caa18c708d42b9e4a8d9a09c6d0665b1
     m_Address: Assets/PokemonArcane/A
     m_ReadOnly: 0
     m_SerializedLabels:
-    - areaA
+    - baseArcane
     - arcane
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0

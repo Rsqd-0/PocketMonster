@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,8 @@ public class Game : MonoBehaviour
     [SerializeField] private InventoryManagerUI inventoryManagerUI;
     [SerializeField] private GameObject overworld;
 
-    [SerializeField] private Spawner spawnerAreaA;
-    private UnityEvent<bool> onPause = new UnityEvent<bool>();
+    [SerializeField] private List<Spawner> spawners;
+    [SerializeField] private List<String> spawnable;
     private bool cursor;
 
     public static Game Instance;
@@ -19,7 +20,10 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         SaveData.SetPokemonPosition(pokemonPosition.transform.position);
-        StartCoroutine(spawnerAreaA.StartSpawn("areaA"));
+        for (int i=0; i<spawners.Count;i++)
+        {
+            StartCoroutine(spawners[i].StartSpawn(spawnable[i]));
+        }
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -53,11 +57,6 @@ public class Game : MonoBehaviour
         //overworld.SetActive(false);
     }
     
-    public void AddOnPauseListener(UnityAction<bool> listener)
-    {
-        onPause.AddListener(listener);
-    }
-
     public void EndGame()
     {
         

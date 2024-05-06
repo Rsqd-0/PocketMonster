@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 8a089092b06ae1746b49990b595712c5
   m_currentHash:
     serializedVersion: 2
-    Hash: 4c2d4793663f6bbd2461291eed5a9aef
+    Hash: 1c3ad7912879c476a34628cb147656d4
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -94,6 +94,11 @@ MonoBehaviour:
     - arcane
     - time
     - areaA
+    - areaB
+    - areaC
+    - baseCosmic
+    - baseArcane
+    - baseTime
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: edf2d0ffdaed2bd4cab27afbefe68f41, type: 2}
