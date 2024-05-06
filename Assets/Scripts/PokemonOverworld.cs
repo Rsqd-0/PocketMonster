@@ -1,26 +1,31 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class PokemonOverworld : MonoBehaviour
 {
-    private BattleSystem battleSystem;
     private Vector3 initialPosition;
     private float moveSpeed = 1f;
     private float movementRadius = 2f;
     private float moveInterval = 3f;
     private bool isMoving = false;
+    private Coroutine movementCoroutine;
+
+    private void Awake()
+    {
+        initialPosition = transform.parent.position;
+    }
 
     private void Start()
     {
-        initialPosition = transform.position;
-        
+        StartMovement();
+    }
 
-        StartCoroutine(RandomMovement());
+    private void StartMovement()
+    {
+        if (movementCoroutine != null)
+            StopCoroutine(movementCoroutine);
+        
+        movementCoroutine = StartCoroutine(RandomMovement());
     }
 
     private IEnumerator RandomMovement()
@@ -30,7 +35,7 @@ public class PokemonOverworld : MonoBehaviour
             if (!isMoving)
             {
                 Vector3 targetPosition = initialPosition + Random.insideUnitSphere * movementRadius;
-                targetPosition.y = initialPosition.y;
+                targetPosition.y = transform.position.y;
 
                 yield return MovePokemon(targetPosition);
 
@@ -52,7 +57,7 @@ public class PokemonOverworld : MonoBehaviour
         while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
             transform.position += moveDirection * (Time.deltaTime * moveSpeed);
-            
+
             if (moveDirection != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
@@ -64,14 +69,25 @@ public class PokemonOverworld : MonoBehaviour
 
         isMoving = false;
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out PlayerMovement player))
         {
-            SaveData.SaveEnemyData(gameObject);
-            SceneManager.LoadScene("Fight", LoadSceneMode.Additive);
-            Debug.Log("Start Combat");
+            Game.Instance.FightScene(gameObject);
         }
+    }
+
+    public void StopMovement()
+    {
+        if (movementCoroutine != null)
+            StopCoroutine(movementCoroutine);
+        
+        isMoving = false;
+    }
+
+    public void ResumeMovement()
+    {
+        StartMovement();
     }
 }

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2690063642444745467, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 0dca1d1924f8aa042af508c5dcc3bab2, type: 2}
     - target: {fileID: 5520528986998026607, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -59,34 +63,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6312905654957243599, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7528561246316049905}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
---- !u!1 &8919806437151821024 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6312905654957243599, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
-  m_PrefabInstance: {fileID: 3193745433720172591}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7528561246316049905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8919806437151821024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da33bba0225329c4b9ab86101014a440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 0dca1d1924f8aa042af508c5dcc3bab2, type: 2}
-  pokeName: 
-  maxHp: 0
-  atk: 0
-  def: 0
-  spd: 0
-  type: 0
-  lvl: 0
-  currentHp: 0

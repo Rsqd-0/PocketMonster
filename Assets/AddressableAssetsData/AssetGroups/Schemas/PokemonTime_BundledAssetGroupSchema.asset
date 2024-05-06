@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
-  m_Name: AreaB_BundledAssetGroupSchema
+  m_Name: PokemonTime_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: 6816368ea609a0548ac177fd6e9d0494, type: 2}
+  m_Group: {fileID: 11400000, guid: 036b7f1df0af88e4484caeed1282d1fd, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 1
   m_IncludeAddressInCatalog: 1

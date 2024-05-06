@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2690063642444745467, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: b2a17b756d12b9a40a7f24ef2986ba57, type: 2}
     - target: {fileID: 5520528986998026607, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -94,3 +98,6 @@ MonoBehaviour:
   type: 0
   lvl: 0
   currentHp: 0
+  buffCounter: 0
+  xP: 0
+  lootTable: []

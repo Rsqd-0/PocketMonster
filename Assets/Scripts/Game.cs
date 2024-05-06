@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField] private GameObject overworld;
+
     [SerializeField] private Spawner spawnerAreaA;
     private UnityEvent<bool> onPause = new UnityEvent<bool>();
+    private bool cursor;
 
     public static Game Instance;
 
@@ -22,24 +26,29 @@ public class Game : MonoBehaviour
             Instance = this;
         }
     }
-    
-    private void Update()
+
+    public static void CursorVisible()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (Time.timeScale == 0f)
-            {
-                Time.timeScale = 1f;
-                onPause.Invoke(false);
-            }
-            else
-            {
-                Time.timeScale = 0f;
-                onPause.Invoke(true);
-            }
-        }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
+    public static void CursorInvisible()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void FightScene(GameObject pokemon)
+    {
+        PokemonOverworld pO = pokemon.GetComponentInChildren<PokemonOverworld>();
+        pO.StopMovement();
+        pO.enabled = false;
+        SaveData.SaveEnemyData(pokemon.transform.parent.gameObject);
+        SceneManager.LoadScene("Fight", LoadSceneMode.Additive);
+        //overworld.SetActive(false);
+    }
+    
     public void AddOnPauseListener(UnityAction<bool> listener)
     {
         onPause.AddListener(listener);

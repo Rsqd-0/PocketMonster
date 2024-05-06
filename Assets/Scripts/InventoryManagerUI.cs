@@ -132,8 +132,13 @@ public class InventoryManagerUI : MonoBehaviour
             pokemonOpened = true;
             inventoryOpened = false;
         }
-        if (inventoryOpened || pokemonOpened) pannelUI.gameObject.SetActive(false);
-        if (!inventoryOpened && !pokemonOpened) pannelUI.gameObject.SetActive(true);
+
+        if (inventoryOpened || pokemonOpened)
+        {
+            pannelUI.gameObject.SetActive(false);
+            Time.timeScale = 0f;
+            Game.CursorVisible();
+        }
         if (inventoryOpened)
         {
             pokemonOpened = false;
@@ -147,7 +152,11 @@ public class InventoryManagerUI : MonoBehaviour
 
             if (prevSelection != selectedItem) UpdateItemSelection();
             //if (Input.GetKeyDown(KeyCode.X)) onBack?.Invoke();
-            if (Input.GetKeyDown(KeyCode.Escape)) inventoryOpened = false;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Quit();
+                inventoryOpened = false;
+            }
         }
         else
         {
@@ -167,13 +176,25 @@ public class InventoryManagerUI : MonoBehaviour
 
             if (prevSelection != selectedPokemon) UpdatePokemonSelection();
             //if (Input.GetKeyDown(KeyCode.X)) onBack?.Invoke();
-            if (Input.GetKeyDown(KeyCode.Escape)) pokemonOpened = false; 
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Quit();
+                pokemonOpened = false;
+            } 
             if (Input.GetKeyDown(KeyCode.Return)) CurrentPokemon();
         }
         else
         {
+            
             pokemonMenu.SetActive(false);
         }
+    }
+
+    private void Quit()
+    {
+        pannelUI.gameObject.SetActive(true);
+        Time.timeScale = 1f;
+        Game.CursorInvisible(); 
     }
 
     void UpdateItemSelection()
@@ -198,8 +219,8 @@ public class InventoryManagerUI : MonoBehaviour
 
         var slot = inventory.Pokemons[selectedPokemon];
         //itemIcon.sprite = slot;
-        characteristics.text = "HP: " + slot.hp + "\nAttack: " + slot.attack + "\nDefense: " + slot.defense + "\nSpeed: " +
-                           slot.speed;
+        characteristics.text = "HP: " + slot.currentHp + " / " + slot.maxHp + "\nAttack: " + slot.atk + "\nDefense: " + slot.def + "\nSpeed: " +
+                           slot.spd;
     }
 
     public void CurrentPokemon()

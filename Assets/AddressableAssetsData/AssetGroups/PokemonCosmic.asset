@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: AreaB
+  m_Name: PokemonCosmic
   m_EditorClassIdentifier: 
-  m_GroupName: AreaB
+  m_GroupName: PokemonCosmic
   m_Data:
     m_SerializedData: []
-  m_GUID: 79512cd098074e14f9c2fb2861b0f164
+  m_GUID: db281bcff82b1494c82849eef7f856be
   m_SerializeEntries:
-  - m_GUID: fbe909a7e1ea90e43886d35fe4ee0fd8
-    m_Address: Assets/PokemonTime/B
+  - m_GUID: 477b44e25bf90574d98b563d20b579eb
+    m_Address: Assets/PokemonCosmic/B
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - areaA
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ce36225a02c73d248ab39d622799d2f4
     m_Address: Assets/PokemonCosmic/A
@@ -31,5 +32,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 71e4f46433c8a4f4d951667dfa268c0f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 43fe7c7d273309f488886aca5aaeb1bf, type: 2}
-    - {fileID: 11400000, guid: 878a875a133d5e24695bba7f18fa8ab3, type: 2}
+    - {fileID: 11400000, guid: ecf9260df1c49bc44a1fa402ae6da405, type: 2}
+    - {fileID: 11400000, guid: fbe25c43558d1c04bb195559b67cbbfa, type: 2}

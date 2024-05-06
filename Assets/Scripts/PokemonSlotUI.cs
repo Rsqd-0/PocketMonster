@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PokemonSlotUI : MonoBehaviour
 {
-    private PokemonSO pokemon;
+    private Unit pokemon;
     
     [SerializeField] private TMP_Text nameUI;
     [SerializeField] private TMP_Text typeUI;
@@ -14,7 +14,7 @@ public class PokemonSlotUI : MonoBehaviour
     public TMP_Text NameUI => nameUI;
     public TMP_Text TypeUI => typeUI;
 
-    public void Set(PokemonSO pokemonToSet)
+    public void Set(Unit pokemonToSet)
     {
         pokemon = pokemonToSet;
         nameUI.text = pokemon.pokeName;

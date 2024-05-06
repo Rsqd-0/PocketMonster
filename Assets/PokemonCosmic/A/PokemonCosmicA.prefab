@@ -8,13 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2690063642444745467, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 31e1bbdbc4814344f8a2eef8c5618bcf, type: 2}
     - target: {fileID: 5520528986998026607, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94678561503be5049855d81fcb062438, type: 2}
     - target: {fileID: 6312905654957243599, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
       propertyPath: m_Name
-      value: PokemonCosmic
+      value: PokemonCosmicA
       objectReference: {fileID: 0}
     - target: {fileID: 7215484016259865692, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
       propertyPath: m_LocalPosition.x

@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Rsqd.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
     path: Assets/Scenes/Fight.unity
     guid: d0580b17097b2424da2e723d47309a97
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 21eb532f18931664c80fa85de239f27f
   m_configObjects:

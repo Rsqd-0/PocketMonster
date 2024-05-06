@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: AreaC
+  m_Name: PokemonTime
   m_EditorClassIdentifier: 
-  m_GroupName: AreaC
+  m_GroupName: PokemonTime
   m_Data:
     m_SerializedData: []
   m_GUID: 653d370e158062644a987bfe7d835ab6
@@ -22,8 +22,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1bbd6de6ea16e6a46b160f1c7d374a99
-    m_Address: Assets/PokemonArcane/B
+  - m_GUID: fbe909a7e1ea90e43886d35fe4ee0fd8
+    m_Address: Assets/PokemonTime/B
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

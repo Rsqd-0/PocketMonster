@@ -8,11 +8,11 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private InventoryManagerUI inventoryManagerUI;
     [SerializeField] private List<ItemSlot> items;
-    [SerializeField] private List<PokemonSO> pokemons;
+    [SerializeField] private List<Unit> pokemons;
     [SerializeField] private int currentPokemon;
 
     public List<ItemSlot> Items => items;
-    public List<PokemonSO> Pokemons => pokemons;
+    public List<Unit> Pokemons => pokemons;
     public int CurrentPokemon => currentPokemon;
     
     public static Inventory GetInventory()
@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
         currentPokemon = index;
     }
 
-    public PokemonSO GetCurrentPokemon()
+    public Unit GetCurrentPokemon()
     {
         return pokemons[currentPokemon];
     }

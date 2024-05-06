@@ -10,7 +10,7 @@ public class PannelUI : MonoBehaviour
     [SerializeField] private List<TMP_Text> pokemons;
     [SerializeField] private InventoryManagerUI inventoryManagerUI;
 
-    private List<PokemonSO> listPokemons;
+    private List<Unit> listPokemons;
     private Inventory inventory;
     
     // Start is called before the first frame update

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -41,6 +42,7 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     void Start()
     {
+        Game.CursorVisible();
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
@@ -50,12 +52,15 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator SetupBattle()
     {
-        playerGO = Instantiate(playerPrefab, playerBattleStation.position, playerBattleStation.rotation);
+        playerGO = Instantiate(Inventory.GetInventory().GetCurrentPokemon().gameObject, playerBattleStation.position, playerBattleStation.rotation);
         playerUnit = playerGO.GetComponent<Unit>();
         
-        enemyGO = Instantiate(SaveData.GetEnemyData(), enemyBattleStation.position, enemyBattleStation.rotation);
+        enemyGO = SaveData.GetEnemyData();
+        enemyGO.transform.position = enemyBattleStation.position;
+        enemyGO.transform.rotation = enemyBattleStation.rotation;
         enemyUnit = enemyGO.GetComponent<Unit>();
         
+        //Game.CursorVisible();
         
         dialogueText.text = "A wild " + enemyUnit.pokeName + " approaches...";
         playerHUD.SetHud(playerUnit);
@@ -111,6 +116,7 @@ public class BattleSystem : MonoBehaviour
         }
         playerUnit.XPGain(enemyUnit.lvl);
         //Loot + XP + Level up + change scene
+        Game.CursorInvisible();
     }
     
 
