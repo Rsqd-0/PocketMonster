@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Used to capture pokemons. Has a low capture rate. You should use it
     when the pokemon is weak.
   icon: {fileID: 21300000, guid: 1e57fb20042d7654db2be45880f9d101, type: 3}
-  percentage: 0
+  bonusBall: 1

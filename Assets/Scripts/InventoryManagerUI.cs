@@ -245,13 +245,12 @@ public class InventoryManagerUI : MonoBehaviour
     {
         int selectedIndex = heals.value;
         List<ItemSlot> potions = inventory.Items.Where(slot => slot.Item is PotionSO && slot.Count > 0).ToList();
-        List<PotionSO> potions2 = new List<PotionSO>();
 
         if (selectedIndex >= 0 && selectedIndex < potions.Count)
         {
             PotionSO potion = (PotionSO)potions[selectedIndex].Item;
             inventory.ModifyItem(potion,-1);
-            inventory.Pokemons[currentPokemon].Heal(potion.hpAmount);
+            inventory.Pokemons[selectedPokemon].Heal(potion.hpAmount);
             UpdateItemList();
             UpdatePokemonList();
             UpdateDropdown();

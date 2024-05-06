@@ -7,6 +7,7 @@ public static class SaveData
     
     private static GameObject enemyGO;
     private static bool playerWon;
+    private static InventoryManagerUI inventoryManagerUI;
     
     public static void SaveEnemyData(GameObject enemy)
     {
@@ -26,5 +27,15 @@ public static class SaveData
     public static bool GetPlayerWon()
     {
         return playerWon;
+    }
+
+    public static void SetInventoryUI(InventoryManagerUI i)
+    {
+        inventoryManagerUI = i;
+    }
+
+    public static InventoryManagerUI GetInventoryUI()
+    {
+        return inventoryManagerUI;
     }
 }

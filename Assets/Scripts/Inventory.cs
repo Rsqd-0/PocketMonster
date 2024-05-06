@@ -47,6 +47,11 @@ public class Inventory : MonoBehaviour
         itemSlot.Count += quantityToAdd;
         if (itemSlot.Count < 0) itemSlot.Count = 0;
     }
+
+    public void AddToPokemon(Unit pokemon)
+    {
+        pokemons.Add(pokemon);
+    }
 }
 
 [Serializable]

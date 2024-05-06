@@ -1349,6 +1349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5d677c2f1aa334d9f21a8567a7634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryManagerUI: {fileID: 625662970}
   overworld: {fileID: 1438023123}
   spawnerAreaA: {fileID: 2363270}
 --- !u!4 &1433121359

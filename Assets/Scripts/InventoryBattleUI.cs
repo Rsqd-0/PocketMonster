@@ -7,6 +7,8 @@ using Time = UnityEngine.Time;
 
 public class InventoryBattleUI : MonoBehaviour
 {
+    [SerializeField] private BattleSystem battle;
+    [SerializeField] private BattleHUD battleUI;
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject inventoryMenu;
     
@@ -17,7 +19,6 @@ public class InventoryBattleUI : MonoBehaviour
 
     private int selectedItem = 0;
     private Inventory inventory;
-    private bool inventoryOpened=true;
 
     void Awake()
     {
@@ -63,9 +64,6 @@ public class InventoryBattleUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (inventoryOpened)
-        {
-            inventoryMenu.SetActive(true);
             int prevSelection = selectedItem;
 
             if (Input.GetKeyDown(KeyCode.DownArrow)) ++selectedItem;
@@ -74,11 +72,6 @@ public class InventoryBattleUI : MonoBehaviour
             selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Items.Count - 1);
 
             if (prevSelection != selectedItem) UpdateItemSelection();
-        }
-        else
-        {
-            inventoryMenu.SetActive(false);
-        }
     }
 
     void UpdateItemSelection()
@@ -96,16 +89,37 @@ public class InventoryBattleUI : MonoBehaviour
 
     public void UseItem()
     {
+        bool itemUsed = false;
         if (inventory.Items[selectedItem].Item is PotionSO && inventory.Items[selectedItem].Count > 0)
         {
             PotionSO potion = (PotionSO)inventory.Items[selectedItem].Item;
             inventory.ModifyItem(potion,-1);
             inventory.GetCurrentPokemon().Heal(potion.hpAmount);
+            battleUI.SetHP(inventory.GetCurrentPokemon().currentHp);
+            UpdateItemList();
+            itemUsed = true;
         }
 
         if (inventory.Items[selectedItem].Item is PokeballSO && inventory.Items[selectedItem].Count > 0)
         {
-            
+            if (inventory.Pokemons.Count == 6)
+            {
+                
+            }
+            else
+            {
+                PokeballSO pokeball = (PokeballSO)inventory.Items[selectedItem].Item;
+                Unit pokemonToAdd = battle.CapturePokemon(pokeball);
+                if (pokemonToAdd != null) inventory.AddToPokemon(pokemonToAdd);
+                inventory.ModifyItem(pokeball, -1);
+                UpdateItemList();
+                itemUsed = true;
+            }
+        }
+
+        if (itemUsed)
+        {
+            StartCoroutine(battle.PlayerItem());
         }
     }
 }

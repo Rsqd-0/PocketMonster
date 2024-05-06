@@ -20,3 +20,4 @@ MonoBehaviour:
   type: 2
   droppableItems:
   - {fileID: 11400000, guid: c8a8a75eec710164dbe6e58841d39741, type: 2}
+  catchRate: 1

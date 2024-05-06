@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField] private InventoryManagerUI inventoryManagerUI;
     [SerializeField] private GameObject overworld;
 
     [SerializeField] private Spawner spawnerAreaA;
@@ -45,6 +46,7 @@ public class Game : MonoBehaviour
         pO.StopMovement();
         pO.enabled = false;
         SaveData.SaveEnemyData(pokemon.gameObject.transform.parent.gameObject);
+        SaveData.SetInventoryUI(inventoryManagerUI);
         SceneManager.LoadScene("Fight", LoadSceneMode.Additive);
         //overworld.SetActive(false);
     }

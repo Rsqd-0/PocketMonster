@@ -16,6 +16,7 @@ public enum BattleState
     WON,
     LOST,
     ESCAPED,
+    CAPTURED
 }
 
 public class BattleSystem : MonoBehaviour
@@ -31,6 +32,7 @@ public class BattleSystem : MonoBehaviour
     private Inventory inventory;
     private GameObject playerGO;
     private GameObject enemyGO;
+    private InventoryManagerUI inventoryManagerUI;
     
     public BattleState state;
     
@@ -52,6 +54,8 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator SetupBattle()
     {
+        inventoryManagerUI = SaveData.GetInventoryUI();
+        
         playerGO = Inventory.GetInventory().GetCurrentPokemon().gameObject;
         Transform playerChildren = playerGO.transform.GetChild(0);
         playerChildren.position = playerBattleStation.position;
@@ -94,6 +98,12 @@ public class BattleSystem : MonoBehaviour
     {
         switch (state)
         {
+            case BattleState.CAPTURED:
+                dialogueText.text = "You captured " + enemyUnit.pokeName + " !";
+                yield return new WaitForSeconds(1f);
+                SaveData.SetPlayerWon(true);
+                SceneManager.UnloadSceneAsync("Fight");
+                break;
             case BattleState.WON:
                 dialogueText.text = "You won the battle!";
                 yield return new WaitForSeconds(1f);
@@ -102,6 +112,7 @@ public class BattleSystem : MonoBehaviour
                 Inventory.GetInventory().AddToInventory(lootedItem);
                 dialogueText.text = "You got " + lootedItem.name + "!";
                 yield return new WaitForSeconds(2f);
+                playerUnit.XPGain(enemyUnit.lvl);
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.LOST:
@@ -117,8 +128,8 @@ public class BattleSystem : MonoBehaviour
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
         }
-        playerUnit.XPGain(enemyUnit.lvl);
-        //Loot + XP + Level up + change scene
+        inventoryManagerUI.UpdatePokemonList();
+        //Reset Buffs/Debuffs
         Game.CursorInvisible();
     }
     
@@ -128,6 +139,8 @@ public class BattleSystem : MonoBehaviour
         float random = Random.Range(0f, 1f);
         if (random < catchRate)
         {
+            state = BattleState.CAPTURED;
+            StartCoroutine(EndBattle());
             return enemyUnit;
         }
         else
@@ -225,6 +238,16 @@ public class BattleSystem : MonoBehaviour
         {
             dialogueText.text = enemyUnit.pokeName + " don't feel any weaker!";
         }
+        
+        state = BattleState.ENEMYTURN;
+        yield return new WaitForSeconds(2f);
+
+        StartCoroutine(EnemyTurn());
+    }
+
+    public IEnumerator PlayerItem()
+    {
+        
         
         state = BattleState.ENEMYTURN;
         yield return new WaitForSeconds(2f);
@@ -452,7 +475,6 @@ public class BattleSystem : MonoBehaviour
     }
     
     #endregion
-   
     
 }
 
