@@ -94,5 +94,18 @@ public class InventoryBattleUI : MonoBehaviour
         description.text = slot.Item.description;
     }
 
+    public void UseItem()
+    {
+        if (inventory.Items[selectedItem].Item is PotionSO && inventory.Items[selectedItem].Count > 0)
+        {
+            PotionSO potion = (PotionSO)inventory.Items[selectedItem].Item;
+            inventory.ModifyItem(potion,-1);
+            inventory.GetCurrentPokemon().Heal(potion.hpAmount);
+        }
 
+        if (inventory.Items[selectedItem].Item is PokeballSO && inventory.Items[selectedItem].Count > 0)
+        {
+            
+        }
+    }
 }
