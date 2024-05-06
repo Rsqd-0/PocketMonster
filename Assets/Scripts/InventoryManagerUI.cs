@@ -11,8 +11,6 @@ using UnityEngine.UI;
 
 public class InventoryManagerUI : MonoBehaviour
 {
-    [SerializeField] private PannelUI pannelUI;
-    
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject parent2;
     [SerializeField] private GameObject inventoryMenu;
@@ -135,7 +133,6 @@ public class InventoryManagerUI : MonoBehaviour
 
         if (inventoryOpened || pokemonOpened)
         {
-            pannelUI.gameObject.SetActive(false);
             Time.timeScale = 0f;
             Game.CursorVisible();
         }
@@ -192,7 +189,6 @@ public class InventoryManagerUI : MonoBehaviour
 
     private void Quit()
     {
-        pannelUI.gameObject.SetActive(true);
         Time.timeScale = 1f;
         Game.CursorInvisible(); 
     }
@@ -216,7 +212,7 @@ public class InventoryManagerUI : MonoBehaviour
             if (i == selectedPokemon) pokemonList[i].NameUI.color = Color.blue;
             else pokemonList[i].NameUI.color = Color.white;
         }
-
+        pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
         var slot = inventory.Pokemons[selectedPokemon];
         //itemIcon.sprite = slot;
         characteristics.text = "HP: " + slot.currentHp + " / " + slot.maxHp + "\nAttack: " + slot.atk + "\nDefense: " + slot.def + "\nSpeed: " +
@@ -236,8 +232,6 @@ public class InventoryManagerUI : MonoBehaviour
         {
             names.NameUI.fontStyle = FontStyles.Normal;
         }
-        pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
-        pannelUI.UpdatePokemon();
         UpdatePokemonList();
     }
 

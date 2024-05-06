@@ -44,7 +44,7 @@ public class Game : MonoBehaviour
         PokemonOverworld pO = pokemon.GetComponentInChildren<PokemonOverworld>();
         pO.StopMovement();
         pO.enabled = false;
-        SaveData.SaveEnemyData(pokemon.transform.parent.gameObject);
+        SaveData.SaveEnemyData(pokemon.gameObject.transform.parent.gameObject);
         SceneManager.LoadScene("Fight", LoadSceneMode.Additive);
         //overworld.SetActive(false);
     }

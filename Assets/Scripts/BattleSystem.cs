@@ -52,15 +52,19 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator SetupBattle()
     {
-        playerGO = Instantiate(Inventory.GetInventory().GetCurrentPokemon().gameObject, playerBattleStation.position, playerBattleStation.rotation);
+        playerGO = Inventory.GetInventory().GetCurrentPokemon().gameObject;
+        Transform playerChildren = playerGO.transform.GetChild(0);
+        playerChildren.position = playerBattleStation.position;
+        playerChildren.rotation = playerBattleStation.rotation;
         playerUnit = playerGO.GetComponent<Unit>();
         
         enemyGO = SaveData.GetEnemyData();
-        enemyGO.transform.position = enemyBattleStation.position;
-        enemyGO.transform.rotation = enemyBattleStation.rotation;
+        Transform enemyChildren = enemyGO.transform.GetChild(0);
+        enemyChildren.position = enemyBattleStation.position;
+        enemyChildren.rotation = enemyBattleStation.rotation;
+        Debug.Log(enemyGO);
+        Debug.Log(enemyChildren);
         enemyUnit = enemyGO.GetComponent<Unit>();
-        
-        //Game.CursorVisible();
         
         dialogueText.text = "A wild " + enemyUnit.pokeName + " approaches...";
         playerHUD.SetHud(playerUnit);
@@ -201,11 +205,11 @@ public class BattleSystem : MonoBehaviour
         {
             enemyUnit.Buff();
             enemyUnit.buffCounter--;
-            dialogueText.text = enemyUnit.pokeName + "feel weaker!";
+            dialogueText.text = enemyUnit.pokeName + " feel weaker!";
         }
         else
         {
-            dialogueText.text = enemyUnit.pokeName + "don't feel any weaker!";
+            dialogueText.text = enemyUnit.pokeName + " don't feel any weaker!";
         }
         
         state = BattleState.ENEMYTURN;
