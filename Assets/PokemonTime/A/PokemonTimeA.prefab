@@ -67,37 +67,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6312905654957243599, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -3026813020758883330}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
---- !u!1 &3480822376170080698 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6312905654957243599, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
-  m_PrefabInstance: {fileID: 7482079580914627957}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &-3026813020758883330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3480822376170080698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da33bba0225329c4b9ab86101014a440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: b2a17b756d12b9a40a7f24ef2986ba57, type: 2}
-  pokeName: 
-  maxHp: 0
-  atk: 0
-  def: 0
-  spd: 0
-  type: 0
-  lvl: 0
-  currentHp: 0
-  buffCounter: 0
-  xP: 0
-  lootTable: []

@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Items/Create new ball")]
 public class PokeballSO : ItemSO
 {
-    public float percentage;
+    public float bonusBall;
 }
