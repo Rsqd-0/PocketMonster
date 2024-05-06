@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour
     public int def;
     public int spd;
     public Type type;
+    public float catchRate; 
 
     public int lvl;
     public float currentHp;
@@ -37,6 +38,7 @@ public class Unit : MonoBehaviour
         baseAtk = atk;
         baseDef = def;
         lootTable = data.droppableItems;
+        catchRate = data.catchRate;
     }
     
     public bool TakeDamage(float damage)

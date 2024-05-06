@@ -122,6 +122,20 @@ public class BattleSystem : MonoBehaviour
         Game.CursorInvisible();
     }
     
+    public Unit CapturePokemon(PokeballSO ball)
+    {
+        float catchRate = (1 - (enemyUnit.currentHp / enemyUnit.maxHp)) * ball.bonusBall * enemyUnit.catchRate;
+        float random = Random.Range(0f, 1f);
+        if (random < catchRate)
+        {
+            return enemyUnit;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
 
     // Region with the player's action
     
