@@ -136,7 +136,7 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator PlayerHeal()
     {
-        playerUnit.currentHp += playerUnit.def + Random.Range(-3,4);
+        playerUnit.Heal(playerUnit.def + Random.Range(-3,4));
         playerHUD.SetHP(playerUnit.currentHp);
         dialogueText.text = "You feel renewed strength!";
 
@@ -276,8 +276,9 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator EnemyHeal()
     {
-        enemyUnit.currentHp += enemyUnit.def + Random.Range(-3,4);
+        enemyUnit.Heal(enemyUnit.def + Random.Range(-3,4));
         enemyHUD.SetHP(enemyUnit.currentHp);
+        
         dialogueText.text = enemyUnit.pokeName + " heals!";
         
         state = BattleState.PLAYERTURN;
@@ -371,6 +372,21 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PLAYERTURN) return;
         
         state = BattleState.ESCAPED;
+        int fail = Random.Range(0, 5);
+        switch (fail)
+        {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                dialogueText.text = "You escaped!";
+                Destroy(enemyGO);
+                SceneManager.UnloadSceneAsync("Fight");
+                break;
+            default:
+                dialogueText.text = "You failed to escape!";
+                break;
+        }
         StartCoroutine(EnemyTurn());
     }
 
