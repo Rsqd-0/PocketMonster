@@ -249,6 +249,7 @@ public class InventoryManagerUI : MonoBehaviour
         if (selectedIndex >= 0 && selectedIndex < potions.Count)
         {
             PotionSO potion = (PotionSO)potions[selectedIndex].Item;
+            if (inventory.Pokemons[selectedPokemon].currentHp == 0 && !potion.revive) return;
             inventory.ModifyItem(potion,-1);
             inventory.Pokemons[selectedPokemon].Heal(potion.hpAmount);
             UpdateItemList();

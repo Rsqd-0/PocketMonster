@@ -102,6 +102,7 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "You captured " + enemyUnit.pokeName + " !";
                 yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(true);
+                enemyGO.transform.position = SaveData.GetPokemonPosition();
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.WON:
@@ -128,6 +129,7 @@ public class BattleSystem : MonoBehaviour
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
         }
+        playerGO.transform.position = SaveData.GetPokemonPosition();
         inventoryManagerUI.UpdatePokemonList();
         //Reset Buffs/Debuffs
         Game.CursorInvisible();
@@ -135,7 +137,7 @@ public class BattleSystem : MonoBehaviour
     
     public Unit CapturePokemon(PokeballSO ball)
     {
-        float catchRate = (1 - (enemyUnit.currentHp / enemyUnit.maxHp)) * ball.bonusBall * enemyUnit.catchRate;
+        float catchRate = (1 - 0.9f*(enemyUnit.currentHp / enemyUnit.maxHp)) * ball.bonusBall * enemyUnit.catchRate;
         float random = Random.Range(0f, 1f);
         if (random < catchRate)
         {

@@ -8,6 +8,7 @@ public static class SaveData
     private static GameObject enemyGO;
     private static bool playerWon;
     private static InventoryManagerUI inventoryManagerUI;
+    private static Vector3 position;
     
     public static void SaveEnemyData(GameObject enemy)
     {
@@ -37,5 +38,15 @@ public static class SaveData
     public static InventoryManagerUI GetInventoryUI()
     {
         return inventoryManagerUI;
+    }
+    
+    public static void SetPokemonPosition(Vector3 positionToSet)
+    {
+        position = positionToSet;
+    }
+
+    public static Vector3 GetPokemonPosition()
+    {
+        return position;
     }
 }

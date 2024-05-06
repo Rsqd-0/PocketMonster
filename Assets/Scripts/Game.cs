@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField] private GameObject pokemonPosition;
     [SerializeField] private InventoryManagerUI inventoryManagerUI;
     [SerializeField] private GameObject overworld;
 
@@ -17,6 +18,7 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        SaveData.SetPokemonPosition(pokemonPosition.transform.position);
         StartCoroutine(spawnerAreaA.StartSpawn("areaA"));
         if (Instance != null)
         {
