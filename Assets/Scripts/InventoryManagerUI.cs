@@ -238,6 +238,7 @@ public class InventoryManagerUI : MonoBehaviour
         }
         pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
         pannelUI.UpdatePokemon();
+        UpdatePokemonList();
     }
 
     public void Throw()
@@ -250,13 +251,15 @@ public class InventoryManagerUI : MonoBehaviour
     {
         int selectedIndex = heals.value;
         List<ItemSlot> potions = inventory.Items.Where(slot => slot.Item is PotionSO && slot.Count > 0).ToList();
+        List<PotionSO> potions2 = new List<PotionSO>();
 
         if (selectedIndex >= 0 && selectedIndex < potions.Count)
         {
-            ItemSO potion = potions[selectedIndex].Item;
-            Debug.Log("Potion utilisée : " + potion.name);
+            PotionSO potion = (PotionSO)potions[selectedIndex].Item;
             inventory.ModifyItem(potion,-1);
+            inventory.Pokemons[currentPokemon].Heal(potion.hpAmount);
             UpdateItemList();
+            UpdatePokemonList();
             UpdateDropdown();
         }
     }
