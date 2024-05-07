@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PokemonArcaneDataC
   m_EditorClassIdentifier: 
   pokeName: Regimystic
-  level: 6
-  hp: 60
-  attack: 9
-  defense: 15
+  level: 7
+  hp: 90
+  attack: 17
+  defense: 25
   speed: 8
   type: 0
   droppableItems:

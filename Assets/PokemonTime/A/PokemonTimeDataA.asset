@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokeName: Chronopuce
   level: 1
-  hp: 15
-  attack: 5
-  defense: 3
+  hp: 17
+  attack: 6
+  defense: 5
   speed: 7
   type: 1
   droppableItems:

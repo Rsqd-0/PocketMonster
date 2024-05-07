@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PokemonCosmicDataC
   m_EditorClassIdentifier: 
   pokeName: Regicelestial
-  level: 6
-  hp: 55
-  attack: 14
-  defense: 6
+  level: 7
+  hp: 65
+  attack: 30
+  defense: 15
   speed: 11
   type: 2
   droppableItems:

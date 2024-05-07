@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PokemonTimeDataC
   m_EditorClassIdentifier: 
   pokeName: Regichronos
-  level: 6
-  hp: 50
-  attack: 12
-  defense: 7
+  level: 7
+  hp: 80
+  attack: 23
+  defense: 20
   speed: 16
   type: 1
   droppableItems:

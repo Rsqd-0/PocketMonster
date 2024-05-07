@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokeName: Saturnio
   level: 3
-  hp: 30
-  attack: 7
-  defense: 3
+  hp: 35
+  attack: 15
+  defense: 7
   speed: 6
   type: 2
   droppableItems:

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokeName: Pyraquart
   level: 3
-  hp: 26
-  attack: 6
-  defense: 2
+  hp: 37
+  attack: 12
+  defense: 9
   speed: 10
   type: 1
   droppableItems:

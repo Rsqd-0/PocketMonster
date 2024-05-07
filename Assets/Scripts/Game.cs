@@ -84,7 +84,6 @@ public class Game : MonoBehaviour
         pO.enabled = false;
         if (pO.CompareTag("Mob"))
         {
-            Debug.Log("oui");
             overworldMusic.Stop();
             fightMusic.Play();
         }

@@ -348,7 +348,7 @@ public class BattleSystem : MonoBehaviour
         
         yield return new WaitForSeconds(1f);
         attackSound.Play();
-        bool isDead = playerUnit.TakeDamage( (enemyUnit.atk + Random.Range(-3,4)) * EffectiveTypeCheck(enemyUnit,playerUnit) - 0.5f*enemyUnit.def);
+        bool isDead = playerUnit.TakeDamage( (enemyUnit.atk + Random.Range(-3,4)) * EffectiveTypeCheck(enemyUnit,playerUnit) - 0.5f*playerUnit.def);
         playerHUD.SetHP(playerUnit.currentHp);
         
         state = BattleState.PLAYERTURN;
@@ -519,11 +519,11 @@ public class BattleSystem : MonoBehaviour
             case Type.Arcane when defender.type == Type.Time:
             case Type.Time when defender.type == Type.Cosmic:
             case Type.Cosmic when defender.type == Type.Arcane:
-                return 1.5f;
+                return 1.2f;
             case Type.Time when defender.type == Type.Arcane:
             case Type.Cosmic when defender.type == Type.Time:
             case Type.Arcane when defender.type == Type.Cosmic:
-                return 0.5f;
+                return 0.8f;
             default:
                 return 1f;
         }
