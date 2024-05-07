@@ -221,8 +221,7 @@ MonoBehaviour:
     count: 2
   - item: {fileID: 11400000, guid: f5486a5b3be7087448f980e8fe7065d9, type: 2}
     count: 2
-  pokemons:
-  - {fileID: 0}
+  pokemons: []
   currentPokemon: 0
 --- !u!136 &614063977657990357
 CapsuleCollider:

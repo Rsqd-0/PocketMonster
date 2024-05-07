@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     public void AddToInventory(ItemSO itemToAdd)
     {
         ModifyItem(itemToAdd,1);
-        inventoryManagerUI.UpdateItemList();
+        if (inventoryManagerUI != null) inventoryManagerUI.UpdateItemList();
     }
     
     public void ModifyItem(ItemSO item, int quantityToAdd)
