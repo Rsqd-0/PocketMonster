@@ -20,8 +20,7 @@ public class TestInventory
 
         yield return loadHandle;
         
-        character = GameObject.Instantiate(loadHandle.Result);
-        character.transform.position = new Vector3(10, 0, 0);
+        character = GameObject.Instantiate(loadHandle.Result,new Vector3(20, 0, 0),Quaternion.identity);
         inventory = Inventory.GetInventory();
     }
     
@@ -33,6 +32,7 @@ public class TestInventory
         yield return loadHandle;
         
         var enemy = GameObject.Instantiate(loadHandle.Result[Random.Range(0, loadHandle.Result.Count)]);
+        enemy.transform.GetChild(0).GetComponent<PokemonOverworld>().enabled = false;
         var enemyUnit = enemy.GetComponent<Unit>();
         
         inventory.AddToPokemon(enemyUnit);
@@ -40,5 +40,37 @@ public class TestInventory
         bool pokemonTest = inventory.Pokemons.Count == 1;
         yield return null;
         Assert.True(pokemonTest);
+    }
+    
+    [UnityTest]
+    public IEnumerator TestAddItem()
+    {
+        int countBeforeAdding = inventory.Items[0].Count;
+        inventory.AddToInventory(inventory.Items[0].Item);
+        int countAfterAdding = inventory.Items[0].Count;
+
+        bool addTest = countBeforeAdding < countAfterAdding;
+        yield return null;
+        Assert.True(addTest);
+    }
+    
+    [UnityTest]
+    public IEnumerator TestCollectItem()
+    {
+        int countBeforeAdding = inventory.Items[0].Count;
+        var loadHandle = Addressables.LoadAssetAsync<GameObject>("Assets/Items/Collectable.prefab");
+
+        yield return loadHandle;
+        
+        var collectable = GameObject.Instantiate(loadHandle.Result);
+        collectable.GetComponentInChildren<CollectableItem>().SetItem(inventory.Items[0].Item);
+
+        collectable.transform.position = character.transform.position;
+        yield return new WaitForSeconds(2f);
+        
+        int countAfterAdding = inventory.Items[0].Count;
+        bool collectTest = countBeforeAdding < countAfterAdding;
+        yield return null;
+        Assert.True(collectTest);
     }
 }

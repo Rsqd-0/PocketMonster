@@ -12,6 +12,11 @@ public class CollectableItem : MonoBehaviour
     {
         inventory = Inventory.GetInventory();
     }
+
+    public void SetItem(ItemSO itemToSet)
+    {
+        item = itemToSet;
+    }
     
     private void OnTriggerEnter(Collider other)
     {
