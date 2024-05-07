@@ -20,5 +20,6 @@ MonoBehaviour:
   speed: 16
   type: 1
   droppableItems:
-  - {fileID: 11400000, guid: f5486a5b3be7087448f980e8fe7065d9, type: 2}
+  - {fileID: 11400000, guid: 1de849636fce854468beec599f73f750, type: 2}
+  - {fileID: 11400000, guid: 889d4e7f5ed0fa04598f364dd97e4b5a, type: 2}
   catchRate: 0.3

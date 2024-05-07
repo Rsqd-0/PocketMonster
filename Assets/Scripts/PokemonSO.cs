@@ -7,6 +7,7 @@ using UnityEngine;
         Arcane,
         Time,
         Cosmic,
+        Universe
     }
 [CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create new Pokemon")]
 public class PokemonSO : ScriptableObject

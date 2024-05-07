@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f07da8e7383facd47bba3a7559216ad6, type: 3}
-  m_Name: PokemonCosmicDataB
+  m_Name: PokemonUniverseDataA
   m_EditorClassIdentifier: 
-  pokeName: Saturnio
-  level: 3
-  hp: 35
-  attack: 15
-  defense: 7
-  speed: 6
+  pokeName: Omnios
+  level: 99
+  hp: 150
+  attack: 40
+  defense: 40
+  speed: 40
   type: 2
   droppableItems:
-  - {fileID: 11400000, guid: a8617b3557f9594418adcec1a7746b21, type: 2}
-  - {fileID: 11400000, guid: 889d4e7f5ed0fa04598f364dd97e4b5a, type: 2}
-  - {fileID: 11400000, guid: a6b51904b07c8104fa803810363eb307, type: 2}
-  catchRate: 0.55
+  - {fileID: 11400000, guid: 66fb4becd9aaee740ad4b8dadf233e77, type: 2}
+  - {fileID: 11400000, guid: f5486a5b3be7087448f980e8fe7065d9, type: 2}
+  catchRate: 1
