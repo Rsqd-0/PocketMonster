@@ -239,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 6455522674303189070, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
       propertyPath: pokemons.Array.data[0]
       value: 
-      objectReference: {fileID: 716249600}
+      objectReference: {fileID: 147942182}
     - target: {fileID: 6465124750641856543, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.22
@@ -592,13 +592,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919806437151821024, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+--- !u!114 &147942182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 650612012588890836, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+  m_PrefabInstance: {fileID: 147942181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da33bba0225329c4b9ab86101014a440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &170497029 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2269544941581648424, guid: f3160b51877bfef44a3d085cb6ae5246, type: 3}
@@ -2184,7 +2195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3341978999119733396, guid: 6588d97f84d84fb4799de90fea868522, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2849,17 +2860,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3341978999119733396, guid: 6588d97f84d84fb4799de90fea868522, type: 3}
   m_PrefabInstance: {fileID: 464888472}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &716249600 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6678817008206992544, guid: 6588d97f84d84fb4799de90fea868522, type: 3}
-  m_PrefabInstance: {fileID: 464888472}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 716249599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da33bba0225329c4b9ab86101014a440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &723988507
 GameObject:
   m_ObjectHideFlags: 3
@@ -4840,7 +4840,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426840111}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.47458237, y: 0.000000015145247, z: -0.000000008165845, w: 0.8802112}
+  m_LocalRotation: {x: 0.47458237, y: -0.000000015145247, z: 0.000000008165845, w: 0.8802112}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
