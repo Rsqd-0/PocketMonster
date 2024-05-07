@@ -7,9 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    [SerializeField] private GameObject pokemonPosition;
+    [SerializeField] private GameObject characterPosition;
     [SerializeField] private InventoryManagerUI inventoryManagerUI;
-    [SerializeField] private GameObject overworld;
 
     [SerializeField] private List<Spawner> spawners;
     [SerializeField] private List<String> spawnable;
@@ -19,7 +18,8 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
-        SaveData.SetPokemonPosition(pokemonPosition.transform.position);
+        SaveData.SetCharacter(FindObjectOfType<PlayerMovement>());
+        SaveData.SetCharacterPosition(characterPosition.transform.position);
         for (int i=0; i<spawners.Count;i++)
         {
             StartCoroutine(spawners[i].StartSpawn(spawnable[i]));
@@ -48,13 +48,13 @@ public class Game : MonoBehaviour
 
     public void FightScene(GameObject pokemon)
     {
+        inventoryManagerUI.UpdatePokemonList();
         PokemonOverworld pO = pokemon.GetComponentInChildren<PokemonOverworld>();
         pO.StopMovement();
         pO.enabled = false;
         SaveData.SaveEnemyData(pokemon.gameObject.transform.parent.gameObject);
         SaveData.SetInventoryUI(inventoryManagerUI);
         SceneManager.LoadScene("Fight", LoadSceneMode.Additive);
-        //overworld.SetActive(false);
     }
     
     public void EndGame()

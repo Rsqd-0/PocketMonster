@@ -27,6 +27,9 @@ public class InventoryManagerUI : MonoBehaviour
     [SerializeField] private TMP_Text characteristics;
 
     [SerializeField] private TMP_Dropdown heals;
+
+    [SerializeField] private Transform playerStation;
+    private Vector3 pokemonBasePosition;
     
     private int selectedItem = 0;
     private int selectedPokemon = 0;
@@ -34,10 +37,13 @@ public class InventoryManagerUI : MonoBehaviour
     private Inventory inventory;
     private bool inventoryOpened;
     private bool pokemonOpened;
+    
+    public bool inBattle;
 
     void Awake()
     {
         inventory = Inventory.GetInventory();
+        pokemonBasePosition = playerStation.position;
     }
 
     private void Start()
@@ -64,6 +70,7 @@ public class InventoryManagerUI : MonoBehaviour
         UpdateItemSelection();
         foreach (var pokemon in inventory.Pokemons)
         {
+            pokemon.gameObject.transform.position = pokemonBasePosition;
             var slotPkm = Instantiate(pokemonSlotUI, parent2.transform);
             slotPkm.gameObject.SetActive(true);
             slotPkm.Set(pokemon);
@@ -89,11 +96,24 @@ public class InventoryManagerUI : MonoBehaviour
 
     public void UpdatePokemonList()
     {
+        if (inventory.Pokemons[currentPokemon].currentHp == 0)
+        {
+            for (int i = 0; i < inventory.Pokemons.Count; i++)
+            {
+                if (inventory.Pokemons[i].currentHp > 0)
+                {
+                    SetCurrentPokemon(i);
+                    break;
+                }
+            }
+            Debug.Log("Lost");
+        }
         pokemonList.Clear();
         foreach (Transform child in parent2.transform)
             Destroy(child.gameObject);
         foreach (var pokemon in inventory.Pokemons)
         {
+            pokemon.gameObject.transform.position = pokemonBasePosition;
             var slotPkm = Instantiate(pokemonSlotUI, parent2.transform);
             slotPkm.gameObject.SetActive(true);
             slotPkm.Set(pokemon);
@@ -119,13 +139,13 @@ public class InventoryManagerUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (Input.GetKey(KeyCode.I))
+        if (Input.GetKey(KeyCode.I) && !inBattle)
         {
             inventoryOpened = true;
             pokemonOpened = false;
         }
 
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKey(KeyCode.P) && !inBattle)
         {
             pokemonOpened = true;
             inventoryOpened = false;
@@ -255,6 +275,16 @@ public class InventoryManagerUI : MonoBehaviour
             UpdateItemList();
             UpdatePokemonList();
             UpdateDropdown();
+        }
+    }
+
+    public void FreeCreature()
+    {
+        if (inventory.Pokemons.Count != 1)
+        {
+            inventory.Pokemons.Remove(inventory.Pokemons[selectedPokemon]);
+            UpdatePokemonList();
+            UpdatePokemonSelection();
         }
     }
 }

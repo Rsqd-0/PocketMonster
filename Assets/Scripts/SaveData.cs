@@ -9,6 +9,7 @@ public static class SaveData
     private static bool playerWon;
     private static InventoryManagerUI inventoryManagerUI;
     private static Vector3 position;
+    private static PlayerMovement character;
     
     public static void SaveEnemyData(GameObject enemy)
     {
@@ -40,13 +41,23 @@ public static class SaveData
         return inventoryManagerUI;
     }
     
-    public static void SetPokemonPosition(Vector3 positionToSet)
+    public static void SetCharacterPosition(Vector3 positionToSet)
     {
         position = positionToSet;
     }
 
-    public static Vector3 GetPokemonPosition()
+    public static Vector3 GetCharacterPosition()
     {
         return position;
+    }
+
+    public static void SetCharacter(PlayerMovement characterToSet)
+    {
+        character = characterToSet;
+    }
+
+    public static PlayerMovement GetCharacter()
+    {
+        return character;
     }
 }

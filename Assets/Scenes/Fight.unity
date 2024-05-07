@@ -801,13 +801,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eeae5328f51fb647b3cafb42e278c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 8919806437151821024, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-  enemyPrefab: {fileID: 3480822376170080698, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
   playerBattleStation: {fileID: 1344611777371105983}
   enemyBattleStation: {fileID: 1344611777371105982}
   dialogueText: {fileID: 1247455467}
   playerHUD: {fileID: 549338623}
   enemyHUD: {fileID: 1201747500}
+  inventoryBattle: {fileID: 800369871}
+  buttons: {fileID: 30112072}
   state: 0
   playerUnit: {fileID: 0}
   enemyUnit: {fileID: 0}

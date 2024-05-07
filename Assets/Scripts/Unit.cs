@@ -12,7 +12,8 @@ public class Unit : MonoBehaviour
     public int def;
     public int spd;
     public Type type;
-    public float catchRate; 
+    public float catchRate;
+    public bool captured;
 
     public int lvl;
     public float currentHp;

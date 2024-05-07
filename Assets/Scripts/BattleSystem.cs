@@ -21,19 +21,23 @@ public enum BattleState
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private Transform playerBattleStation;
     [SerializeField] private Transform enemyBattleStation;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private BattleHUD playerHUD;
     [SerializeField] private BattleHUD enemyHUD;
     
+    [SerializeField] private GameObject inventoryBattle;
+    [SerializeField] private GameObject buttons;
+    
     private Inventory inventory;
     private GameObject playerGO;
+    private Transform playerChild;
     private GameObject enemyGO;
+    private Transform enemyChild;
     private InventoryManagerUI inventoryManagerUI;
-    private Vector3 stationPosition;
+    private PokemonOverworld pokemonOverworld;
+    private PlayerMovement character;
     
     public BattleState state;
     
@@ -45,6 +49,9 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     void Start()
     {
+        character = SaveData.GetCharacter();
+        inventoryManagerUI = SaveData.GetInventoryUI();
+        inventoryManagerUI.inBattle = true;
         Game.CursorVisible();
         state = BattleState.START;
         StartCoroutine(SetupBattle());
@@ -55,22 +62,18 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator SetupBattle()
     {
-        inventoryManagerUI = SaveData.GetInventoryUI();
-        stationPosition = SaveData.GetPokemonPosition();
-        
         playerGO = Inventory.GetInventory().GetCurrentPokemon().gameObject;
-        Transform playerChildren = playerGO.transform.GetChild(0);
-        playerChildren.position = playerBattleStation.position;
-        playerChildren.rotation = playerBattleStation.rotation;
+        playerChild = playerGO.transform.GetChild(0);
+        playerChild.position = playerBattleStation.position;
+        playerChild.rotation = playerBattleStation.rotation;
         playerUnit = playerGO.GetComponent<Unit>();
         
         enemyGO = SaveData.GetEnemyData();
-        Transform enemyChildren = enemyGO.transform.GetChild(0);
-        enemyChildren.position = enemyBattleStation.position;
-        enemyChildren.rotation = enemyBattleStation.rotation;
-        Debug.Log(enemyGO);
-        Debug.Log(enemyChildren);
+        enemyChild = enemyGO.transform.GetChild(0);
+        enemyChild.position = enemyBattleStation.position;
+        enemyChild.rotation = enemyBattleStation.rotation;
         enemyUnit = enemyGO.GetComponent<Unit>();
+        pokemonOverworld = enemyChild.GetComponent<PokemonOverworld>();
         
         dialogueText.text = "A wild " + enemyUnit.pokeName + " approaches...";
         playerHUD.SetHud(playerUnit);
@@ -93,6 +96,11 @@ public class BattleSystem : MonoBehaviour
         
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.P)) return;
+    }
+
     /// <summary>
     ///   <para>Handle the what happens at this end of the battle</para>
     /// </summary>
@@ -105,9 +113,8 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(true);
                 enemyUnit.currentHp = enemyUnit.maxHp;
-                Debug.Log(enemyGO.transform.position);
-                enemyGO.transform.position = stationPosition;
-                Debug.Log(enemyGO.transform.position);
+                enemyGO.transform.position = playerGO.transform.position;
+                enemyChild.position = playerGO.transform.position;
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.WON:
@@ -126,24 +133,31 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "You were defeated!";
                 yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(false);
-                //tp le personnage au début
+                character.transform.position = SaveData.GetCharacterPosition();
+                enemyChild.position = enemyGO.transform.position;
+                pokemonOverworld.enabled = true;
+                pokemonOverworld.StartMovement();
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.ESCAPED:
                 dialogueText.text = "You ran away!";
                 yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(false);
-                Destroy(enemyGO);
+                character.transform.position = SaveData.GetCharacterPosition();
+                enemyChild.position = enemyGO.transform.position;
+                pokemonOverworld.enabled = true;
+                pokemonOverworld.StartMovement();
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
         }
-        playerGO.transform.position = stationPosition;
+        playerChild.position = playerGO.transform.position;
         playerUnit.ResetBuff();
         enemyUnit.ResetBuff();
         inventoryManagerUI.UpdatePokemonList();
         inventoryManagerUI.UpdateItemList();
         inventoryManagerUI.UpdateDropdown();
         Game.CursorInvisible();
+        inventoryManagerUI.inBattle = false;
     }
     
     public Unit CapturePokemon(PokeballSO ball)
@@ -153,7 +167,7 @@ public class BattleSystem : MonoBehaviour
         if (random < catchRate)
         {
             state = BattleState.CAPTURED;
-            StartCoroutine(EndBattle());
+            enemyUnit.captured = true;
             return enemyUnit;
         }
         else
@@ -217,7 +231,7 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator PlayerAttack()
     {
-        bool isDead = enemyUnit.TakeDamage( (playerUnit.atk + Random.Range(-3,3)) * EffectiveTypeCheck(playerUnit,enemyUnit) );
+        bool isDead = enemyUnit.TakeDamage( (playerUnit.atk + Random.Range(-3,3)) * EffectiveTypeCheck(playerUnit,enemyUnit) - 0.5f*enemyUnit.def);
         enemyHUD.SetHP(enemyUnit.currentHp);
         dialogueText.text = "The attack was successful!";
         
@@ -243,7 +257,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (playerUnit.buffCounter < 6)
         {
-            enemyUnit.Buff();
+            enemyUnit.Distracted();
             enemyUnit.buffCounter--;
             dialogueText.text = enemyUnit.pokeName + " feel weaker!";
         }
@@ -258,14 +272,33 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(EnemyTurn());
     }
 
-    public IEnumerator PlayerItem()
+    public IEnumerator PlayerItem(ItemSO itemUsed)
     {
+        if (itemUsed != null)
+        {
+            //close ui
+            inventoryBattle.SetActive(false);
+            buttons.SetActive(true);
+            dialogueText.text = itemUsed.name + " was used !";
+            state = BattleState.ENEMYTURN;
+            yield return new WaitForSeconds(2f);
+            if (enemyUnit.captured)
+            {
+                state = BattleState.CAPTURED;
+                StartCoroutine(EndBattle());
+            }
+            else
+            {
+                StartCoroutine(EnemyTurn());
+            }
+        }
+        else
+        {
+            dialogueText.text = "You already have 6 creatures !";
+            yield return new WaitForSeconds(2f);
+            dialogueText.text = "Choose an action:";
+        }
         
-        
-        state = BattleState.ENEMYTURN;
-        yield return new WaitForSeconds(2f);
-
-        StartCoroutine(EnemyTurn());
     }
 
     #endregion
@@ -307,7 +340,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = enemyUnit.pokeName + " attacks!";
         
         yield return new WaitForSeconds(1f);
-        bool isDead = playerUnit.TakeDamage( (enemyUnit.atk + Random.Range(-3,4)) * EffectiveTypeCheck(enemyUnit,playerUnit) );
+        bool isDead = playerUnit.TakeDamage( (enemyUnit.atk + Random.Range(-3,4)) * EffectiveTypeCheck(enemyUnit,playerUnit) - 0.5f*enemyUnit.def);
         playerHUD.SetHP(playerUnit.currentHp);
         
         state = BattleState.PLAYERTURN;
@@ -367,7 +400,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (enemyUnit.buffCounter < 6)
         {
-            playerUnit.Buff();
+            playerUnit.Distracted();
             playerUnit.buffCounter--;
             dialogueText.text = playerUnit.pokeName + " feel weaker!";
         }
@@ -433,15 +466,13 @@ public class BattleSystem : MonoBehaviour
             case 1:
             case 2:
             case 3:
-                dialogueText.text = "You escaped!";
-                Destroy(enemyGO);
-                SceneManager.UnloadSceneAsync("Fight");
+                StartCoroutine(EndBattle());
                 break;
             default:
                 dialogueText.text = "You failed to escape!";
+                StartCoroutine(EnemyTurn());
                 break;
         }
-        StartCoroutine(EnemyTurn());
     }
 
     /// <summary>

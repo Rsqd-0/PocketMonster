@@ -90,6 +90,7 @@ public class InventoryBattleUI : MonoBehaviour
     public void UseItem()
     {
         bool itemUsed = false;
+        ItemSO item = null;
         if (inventory.Items[selectedItem].Item is PotionSO && inventory.Items[selectedItem].Count > 0)
         {
             PotionSO potion = (PotionSO)inventory.Items[selectedItem].Item;
@@ -98,15 +99,12 @@ public class InventoryBattleUI : MonoBehaviour
             battleUI.SetHP(inventory.GetCurrentPokemon().currentHp);
             UpdateItemList();
             itemUsed = true;
+            item = potion;
         }
 
         if (inventory.Items[selectedItem].Item is PokeballSO && inventory.Items[selectedItem].Count > 0)
         {
-            if (inventory.Pokemons.Count == 6)
-            {
-                
-            }
-            else
+            if (inventory.Pokemons.Count < 6)
             {
                 PokeballSO pokeball = (PokeballSO)inventory.Items[selectedItem].Item;
                 Unit pokemonToAdd = battle.CapturePokemon(pokeball);
@@ -114,12 +112,9 @@ public class InventoryBattleUI : MonoBehaviour
                 inventory.ModifyItem(pokeball, -1);
                 UpdateItemList();
                 itemUsed = true;
+                item = pokeball;
             }
         }
-
-        if (itemUsed)
-        {
-            StartCoroutine(battle.PlayerItem());
-        }
+        StartCoroutine(battle.PlayerItem(item));
     }
 }

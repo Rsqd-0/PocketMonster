@@ -248,6 +248,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 147942182}
     - target: {fileID: 6455522674303189070, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
+      propertyPath: pokemons.Array.data[1]
+      value: 
+      objectReference: {fileID: 147942182}
+    - target: {fileID: 6455522674303189070, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
+      propertyPath: pokemons.Array.data[2]
+      value: 
+      objectReference: {fileID: 147942182}
+    - target: {fileID: 6455522674303189070, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
+      propertyPath: pokemons.Array.data[3]
+      value: 
+      objectReference: {fileID: 147942182}
+    - target: {fileID: 6455522674303189070, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
+      propertyPath: pokemons.Array.data[4]
+      value: 
+      objectReference: {fileID: 147942182}
+    - target: {fileID: 6455522674303189070, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
       propertyPath: items.Array.data[2].item
       value: 
       objectReference: {fileID: 11400000, guid: 1de849636fce854468beec599f73f750, type: 2}
@@ -603,6 +619,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2019783652653017039, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 2054370223096161665, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -676,6 +696,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3815225437209149054, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357693353538366617, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357693353538366617, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357693353538366617, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357693353538366617, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -767,6 +803,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7618344019467951284, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618344019467951284, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -6.457
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618344019467951284, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.00010681
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618344019467951284, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.2285004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618344019467951284, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000061035156
+      objectReference: {fileID: 0}
     - target: {fileID: 8041595211958338172, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -798,7 +854,7 @@ PrefabInstance:
     - target: {fileID: 8573248705058775528, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
       propertyPath: pokemonIcon
       value: 
-      objectReference: {fileID: 857245450}
+      objectReference: {fileID: 0}
     - target: {fileID: 8573248705058775528, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
       propertyPath: pokemonMenu
       value: 
@@ -807,6 +863,10 @@ PrefabInstance:
       propertyPath: inventoryMenu
       value: 
       objectReference: {fileID: 835271042}
+    - target: {fileID: 8573248705058775528, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
+      propertyPath: playerStation
+      value: 
+      objectReference: {fileID: 1421374283}
     - target: {fileID: 8573248705058775528, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
       propertyPath: pokemonSlotUI
       value: 
@@ -1085,7 +1145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502767977}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5257311, y: 0.000000021954929, z: -0.00000001356889, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: -0.000000021954936, z: 0.000000013568895, w: 0.85065085}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1093,67 +1153,6 @@ Transform:
   - {fileID: 723988508}
   m_Father: {fileID: 2071482543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &519498839
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -70.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8293674575643410586, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8919806437151821024, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
-      propertyPath: m_Name
-      value: PokemonArcaneA (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
 --- !u!1001 &523052386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1321,7 +1320,7 @@ Transform:
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
   m_LocalRotation: {x: -0.56023186, y: 0.04631627, z: -0.013178701, w: -0.826935}
-  m_LocalPosition: {x: 0, y: 50, z: 0}
+  m_LocalPosition: {x: 0, y: 50, z: -0.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1481,17 +1480,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5256039647607043345, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
   m_PrefabInstance: {fileID: 202391518}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &857245450 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6424267746747041761, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
-  m_PrefabInstance: {fileID: 202391518}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &874938993 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1442841292270541362, guid: f3160b51877bfef44a3d085cb6ae5246, type: 3}
@@ -1593,6 +1581,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba3c5665c49fc34fafade306bd693fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1330822944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330822945}
+  m_Layer: 0
+  m_Name: CharacterBasePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330822945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330822944}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.22, y: 0, z: -5.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1421374280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,9 +1804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5d677c2f1aa334d9f21a8567a7634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokemonPosition: {fileID: 1421374280}
+  characterPosition: {fileID: 1330822944}
   inventoryManagerUI: {fileID: 625662970}
-  overworld: {fileID: 1438023123}
   spawners:
   - {fileID: 661718698}
   - {fileID: 825860222}
@@ -2061,7 +2079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742209233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5257311, y: 0.000000043909864, z: -0.000000027137785, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: -0.000000043909864, z: 0.000000027137785, w: 0.85065085}
   m_LocalPosition: {x: 4.22, y: 6, z: -8.8105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3084,13 +3102,13 @@ SceneRoots:
   - {fileID: 202391518}
   - {fileID: 2071482543}
   - {fileID: 431549831}
+  - {fileID: 1330822945}
   - {fileID: 45544693}
   - {fileID: 1438023126}
   - {fileID: 2363269}
   - {fileID: 2135296433}
-  - {fileID: 147942181}
-  - {fileID: 519498839}
-  - {fileID: 1421374283}
   - {fileID: 179383712}
   - {fileID: 393414984}
   - {fileID: 523052386}
+  - {fileID: 147942181}
+  - {fileID: 1421374283}

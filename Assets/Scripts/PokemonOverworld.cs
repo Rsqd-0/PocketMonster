@@ -20,7 +20,7 @@ public class PokemonOverworld : MonoBehaviour
         StartMovement();
     }
 
-    private void StartMovement()
+    public void StartMovement()
     {
         if (movementCoroutine != null)
             StopCoroutine(movementCoroutine);

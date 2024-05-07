@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour
     private GameObject enemy;
     private bool spawned = false;
     private int spawningDelay = 1;
+    private Unit enemyUnit;
     
     public IEnumerator StartSpawn(string label)
     {
@@ -20,11 +21,6 @@ public class Spawner : MonoBehaviour
         loadHandle.Completed += (operation) => { StartCoroutine(SpawnEnemy()); };
 
         yield return loadHandle;
-    }
-
-    private void OnDestroy()
-    {
-        Addressables.Release(loadHandle);
     }
 
     public void AddOnSpawnListener(UnityAction<GameObject> listener)
@@ -38,13 +34,14 @@ public class Spawner : MonoBehaviour
 
         var enemyPrefab = loadHandle.Result[Random.Range(0, loadHandle.Result.Count)];
         enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity, transform);
+        enemyUnit = enemy.GetComponent<Unit>();
         spawned = true;
         onSpawn.Invoke(enemy);
     }
 
     void Update()
     {
-        if (spawned && enemy == null)
+        if (spawned && (enemy == null || enemyUnit.captured))
         {
             spawningDelay = 7;
             spawned = false;
