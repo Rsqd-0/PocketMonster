@@ -33,6 +33,7 @@ public class BattleSystem : MonoBehaviour
     private GameObject playerGO;
     private GameObject enemyGO;
     private InventoryManagerUI inventoryManagerUI;
+    private Vector3 stationPosition;
     
     public BattleState state;
     
@@ -55,6 +56,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator SetupBattle()
     {
         inventoryManagerUI = SaveData.GetInventoryUI();
+        stationPosition = SaveData.GetPokemonPosition();
         
         playerGO = Inventory.GetInventory().GetCurrentPokemon().gameObject;
         Transform playerChildren = playerGO.transform.GetChild(0);
@@ -102,7 +104,10 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "You captured " + enemyUnit.pokeName + " !";
                 yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(true);
-                enemyGO.transform.position = SaveData.GetPokemonPosition();
+                enemyUnit.currentHp = enemyUnit.maxHp;
+                Debug.Log(enemyGO.transform.position);
+                enemyGO.transform.position = stationPosition;
+                Debug.Log(enemyGO.transform.position);
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.WON:
@@ -114,26 +119,30 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "You got " + lootedItem.name + "!";
                 yield return new WaitForSeconds(2f);
                 playerUnit.XPGain(enemyUnit.lvl);
+                Destroy(enemyGO);
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.LOST:
                 dialogueText.text = "You were defeated!";
                 yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(false);
+                //tp le personnage au début
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.ESCAPED:
                 dialogueText.text = "You ran away!";
                 yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(false);
+                Destroy(enemyGO);
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
         }
-        playerGO.transform.position = SaveData.GetPokemonPosition();
-        inventoryManagerUI.UpdatePokemonList();
+        playerGO.transform.position = stationPosition;
         playerUnit.ResetBuff();
         enemyUnit.ResetBuff();
-        //Reset Buffs/Debuffs
+        inventoryManagerUI.UpdatePokemonList();
+        inventoryManagerUI.UpdateItemList();
+        inventoryManagerUI.UpdateDropdown();
         Game.CursorInvisible();
     }
     

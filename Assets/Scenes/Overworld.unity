@@ -490,6 +490,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba3c5665c49fc34fafade306bd693fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &179383712
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 60.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70144624
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7127224
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.914
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341978999119733396, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
+      propertyPath: m_Name
+      value: PokemonTimeC
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc41a4c621f54af41b81fe54db0c4f95, type: 3}
 --- !u!1001 &202391518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -868,6 +925,63 @@ MonoBehaviour:
     m_Bits: 64
   groundDrag: 5
   orientation: {fileID: 2089758393}
+--- !u!1001 &393414984
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -64.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000017881393
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 30.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8977582
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.44048876
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 52.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150581471791972871, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341978999119733396, guid: cec373332757977498b946c8ac371cc9, type: 3}
+      propertyPath: m_Name
+      value: PokemonCosmicC
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cec373332757977498b946c8ac371cc9, type: 3}
 --- !u!1 &431549830
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +1085,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502767977}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5257311, y: -0.000000021954936, z: 0.000000013568895, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: 0.000000021954929, z: -0.00000001356889, w: 0.85065085}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -979,6 +1093,124 @@ Transform:
   - {fileID: 723988508}
   m_Father: {fileID: 2071482543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &519498839
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -70.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293674575643410586, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919806437151821024, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_Name
+      value: PokemonArcaneA (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+--- !u!1001 &523052386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 54.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -42.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.82004744
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5722956
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -69.821
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919806437151821024, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
+      propertyPath: m_Name
+      value: PokemonArcaneC
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38ad0c4ea34bb9c47b186ff5dc5d11e3, type: 3}
 --- !u!114 &625662970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8573248705058775528, guid: 2125c5af2ce1cf94a9e4cf521b182979, type: 3}
@@ -1515,7 +1747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426840111}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.47458237, y: 0.000000015145247, z: -0.000000008165845, w: 0.8802112}
+  m_LocalRotation: {x: 0.47458237, y: -0.000000015145247, z: 0.000000008165845, w: 0.8802112}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1829,7 +2061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742209233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5257311, y: -0.000000043909864, z: 0.000000027137785, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: 0.000000043909864, z: -0.000000027137785, w: 0.85065085}
   m_LocalPosition: {x: 4.22, y: 6, z: -8.8105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2857,4 +3089,8 @@ SceneRoots:
   - {fileID: 2363269}
   - {fileID: 2135296433}
   - {fileID: 147942181}
+  - {fileID: 519498839}
   - {fileID: 1421374283}
+  - {fileID: 179383712}
+  - {fileID: 393414984}
+  - {fileID: 523052386}

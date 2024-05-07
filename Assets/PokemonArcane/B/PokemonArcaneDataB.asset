@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PokemonArcaneDataB
   m_EditorClassIdentifier: 
   pokeName: Crystara
+  level: 3
   hp: 34
   attack: 3
   defense: 8

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PokemonArcaneDataA
   m_EditorClassIdentifier: 
   pokeName: Salamagie
+  level: 1
   hp: 17
   attack: 4
   defense: 4

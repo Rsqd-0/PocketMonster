@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f07da8e7383facd47bba3a7559216ad6, type: 3}
-  m_Name: PokemonCosmicDataB
+  m_Name: PokemonArcaneDataC
   m_EditorClassIdentifier: 
-  pokeName: Saturnio
-  level: 3
-  hp: 30
-  attack: 7
-  defense: 3
-  speed: 6
-  type: 2
+  pokeName: Regimystic
+  level: 6
+  hp: 60
+  attack: 9
+  defense: 15
+  speed: 8
+  type: 0
   droppableItems:
   - {fileID: 11400000, guid: f5486a5b3be7087448f980e8fe7065d9, type: 2}
-  catchRate: 0.55
+  catchRate: 0.4

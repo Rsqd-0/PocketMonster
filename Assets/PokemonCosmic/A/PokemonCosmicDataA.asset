@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PokemonCosmicDataA
   m_EditorClassIdentifier: 
   pokeName: Bulbalune
+  level: 1
   hp: 20
   attack: 3
   defense: 6

@@ -102,7 +102,7 @@ public class InventoryManagerUI : MonoBehaviour
         UpdatePokemonSelection();
     }
 
-    void UpdateDropdown()
+    public void UpdateDropdown()
     {
         List<ItemSlot> potions = inventory.Items.Where(slot => slot.Item is PotionSO && slot.Count > 0).ToList();
         
@@ -215,7 +215,7 @@ public class InventoryManagerUI : MonoBehaviour
         pokemonList[currentPokemon].NameUI.fontStyle = FontStyles.Underline;
         var slot = inventory.Pokemons[selectedPokemon];
         //itemIcon.sprite = slot;
-        characteristics.text = "HP: " + slot.currentHp + " / " + slot.maxHp + "\nAttack: " + slot.atk + "\nDefense: " + slot.def + "\nSpeed: " +
+        characteristics.text = "Level: " + slot.lvl + "\nHP: " + slot.currentHp + " / " + slot.maxHp + "\n\nAttack: " + slot.atk + "\nDefense: " + slot.def + "\nSpeed: " +
                            slot.spd;
     }
 

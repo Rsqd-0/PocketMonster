@@ -28,6 +28,7 @@ public class Unit : MonoBehaviour
     
     private void Awake()
     {
+        lvl = data.level;
         pokeName = data.pokeName;
         maxHp = data.hp;
         currentHp = maxHp;
@@ -84,8 +85,8 @@ public class Unit : MonoBehaviour
             lvl++;
             maxHp += 10;
             currentHp = maxHp;
-            atk += 2;
-            def += 2;
+            baseAtk += 2;
+            baseDef += 2;
             spd += 2;
             xP = 0;
             maxXP = lvl * 5;
@@ -97,6 +98,8 @@ public class Unit : MonoBehaviour
         buffCounter = 0;
         atk = baseAtk;
         def = baseDef;
+        currentHp = Mathf.RoundToInt(currentHp);
+        if (currentHp < 0) currentHp = 0;
     }
     
     
