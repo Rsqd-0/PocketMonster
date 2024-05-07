@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &42348625136380625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2361073430209906990}
+  m_Layer: 0
+  m_Name: Orientation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2361073430209906990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42348625136380625}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6465124750641856543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741301495743114451
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,11 +148,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6465124750641856543}
-  - component: {fileID: -2028646882505035520}
   - component: {fileID: -3123054167018029884}
-  - component: {fileID: -2646620755650102307}
   - component: {fileID: 6455522674303189070}
   - component: {fileID: 614063977657990357}
+  - component: {fileID: 5487955391840792768}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -143,21 +173,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9024268011044153070}
+  - {fileID: 2361073430209906990}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2028646882505035520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6748207421784093464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25fc923c2452bf47a16be873a22beaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
 --- !u!54 &-3123054167018029884
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -180,23 +198,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &-2646620755650102307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6748207421784093464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a7fd0768db6e5648b6ed9c1cb5e168b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Interpolate: 1
+  m_Constraints: 4
+  m_CollisionDetection: 1
 --- !u!114 &6455522674303189070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,16 +215,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58cffbd1104c1c346b4d7949210306e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryManagerUI: {fileID: 0}
   items:
   - item: {fileID: 11400000, guid: c8a8a75eec710164dbe6e58841d39741, type: 2}
-    count: 5
+    count: 2
   - item: {fileID: 11400000, guid: f5486a5b3be7087448f980e8fe7065d9, type: 2}
     count: 2
   pokemons:
-  - {fileID: 11400000, guid: 0dca1d1924f8aa042af508c5dcc3bab2, type: 2}
-  - {fileID: 11400000, guid: 31e1bbdbc4814344f8a2eef8c5618bcf, type: 2}
-  - {fileID: 11400000, guid: b2a17b756d12b9a40a7f24ef2986ba57, type: 2}
-  currentPokemon: {fileID: 0}
+  - {fileID: 0}
+  currentPokemon: 0
 --- !u!136 &614063977657990357
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -242,6 +247,25 @@ CapsuleCollider:
   m_Height: 2.085816
   m_Direction: 1
   m_Center: {x: 0, y: 0.9958863, z: 0}
+--- !u!114 &5487955391840792768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748207421784093464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d5f9a668d9f324ebc697236beeef73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  playerHeight: 2
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
+  groundDrag: 5
+  orientation: {fileID: 2361073430209906990}
 --- !u!1 &7228650891589167871
 GameObject:
   m_ObjectHideFlags: 0

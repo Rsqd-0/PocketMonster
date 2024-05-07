@@ -21,9 +21,9 @@ public class Unit : MonoBehaviour
     public int xP;
     public List<ItemSO> lootTable;
 
-    private int maxXP;
-    private int baseAtk;
-    private int baseDef;
+    public int maxXP;
+    public int baseAtk;
+    public int baseDef;
     
     
     
@@ -68,12 +68,14 @@ public class Unit : MonoBehaviour
 
     public void Buff()
     {
+        buffCounter++;
         atk += baseAtk / 2;
         def += baseDef / 2;
     }
     
     public void Distracted()
     {
+        buffCounter--;
         atk -= baseAtk / 3;
         def -= baseDef / 3;
     }
