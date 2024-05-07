@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         // Load the game scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Rsqd");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Overworld");
     }
     
     public void QuitGame()
