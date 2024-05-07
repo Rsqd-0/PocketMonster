@@ -337,6 +337,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PokemonTimeB
       objectReference: {fileID: 0}
+    - target: {fileID: 6312905654957243599, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
+      propertyPath: m_TagString
+      value: Mob
+      objectReference: {fileID: 0}
     - target: {fileID: 7215484016259865692, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -376,6 +380,10 @@ PrefabInstance:
     - target: {fileID: 7215484016259865692, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798937289910251629, guid: f0a2c83d180ed8f4a8cab1eb47f2dccd, type: 3}
+      propertyPath: m_TagString
+      value: Mob
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

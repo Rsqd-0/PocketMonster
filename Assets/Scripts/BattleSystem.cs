@@ -26,6 +26,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private BattleHUD playerHUD;
     [SerializeField] private BattleHUD enemyHUD;
+    [SerializeField] private AudioSource attackSound;
+    [SerializeField] private AudioSource powerUpSound;
+    [SerializeField] private AudioSource distractSound;
+    [SerializeField] private AudioSource healSound;
     
     [SerializeField] private GameObject inventoryBattle;
     [SerializeField] private GameObject buttons;
@@ -106,6 +110,7 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator EndBattle()
     {
+        yield return new WaitForSeconds(1f);
         switch (state)
         {
             case BattleState.CAPTURED:
@@ -115,6 +120,7 @@ public class BattleSystem : MonoBehaviour
                 enemyUnit.currentHp = enemyUnit.maxHp;
                 enemyGO.transform.position = playerGO.transform.position;
                 enemyChild.position = playerGO.transform.position;
+                Game.overworldMusicPlay();
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.WON:
@@ -127,6 +133,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
                 playerUnit.XPGain(enemyUnit.lvl);
                 Destroy(enemyGO);
+                Game.overworldMusicPlay();
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.LOST:
@@ -137,6 +144,7 @@ public class BattleSystem : MonoBehaviour
                 enemyChild.position = enemyGO.transform.position;
                 pokemonOverworld.enabled = true;
                 pokemonOverworld.StartMovement();
+                Game.overworldMusicPlay();
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
             case BattleState.ESCAPED:
@@ -147,6 +155,7 @@ public class BattleSystem : MonoBehaviour
                 enemyChild.position = enemyGO.transform.position;
                 pokemonOverworld.enabled = true;
                 pokemonOverworld.StartMovement();
+                Game.overworldMusicPlay();
                 SceneManager.UnloadSceneAsync("Fight");
                 break;
         }
@@ -212,7 +221,6 @@ public class BattleSystem : MonoBehaviour
         if (playerUnit.buffCounter < 6)
         {
             playerUnit.Buff();
-            playerUnit.buffCounter++;
             dialogueText.text = "You feel stronger!";
         }
         else
@@ -255,10 +263,9 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator PlayerDistract()
     {
-        if (playerUnit.buffCounter < 6)
+        if (enemyUnit.buffCounter > -6)
         {
             enemyUnit.Distracted();
-            enemyUnit.buffCounter--;
             dialogueText.text = enemyUnit.pokeName + " feel weaker!";
         }
         else
@@ -340,6 +347,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = enemyUnit.pokeName + " attacks!";
         
         yield return new WaitForSeconds(1f);
+        attackSound.Play();
         bool isDead = playerUnit.TakeDamage( (enemyUnit.atk + Random.Range(-3,4)) * EffectiveTypeCheck(enemyUnit,playerUnit) - 0.5f*enemyUnit.def);
         playerHUD.SetHP(playerUnit.currentHp);
         
@@ -367,6 +375,7 @@ public class BattleSystem : MonoBehaviour
         enemyHUD.SetHP(enemyUnit.currentHp);
         
         dialogueText.text = enemyUnit.pokeName + " heals!";
+        healSound.Play();
         
         state = BattleState.PLAYERTURN;
         yield return new WaitForSeconds(2f);
@@ -382,8 +391,8 @@ public class BattleSystem : MonoBehaviour
         if (enemyUnit.buffCounter < 6)
         {
             enemyUnit.Buff();
-            enemyUnit.buffCounter++;
             dialogueText.text = enemyUnit.pokeName + " feels stronger!";
+            powerUpSound.Play();
         }
         else
         {
@@ -398,11 +407,11 @@ public class BattleSystem : MonoBehaviour
     
     IEnumerator EnemyDistract()
     {
-        if (enemyUnit.buffCounter < 6)
+        if (playerUnit.buffCounter > -6)
         {
             playerUnit.Distracted();
-            playerUnit.buffCounter--;
             dialogueText.text = playerUnit.pokeName + " feel weaker!";
+            distractSound.Play();
         }
         else
         {
@@ -458,7 +467,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.PLAYERTURN) return;
         
-        state = BattleState.ESCAPED;
+        
         int fail = Random.Range(0, 5);
         switch (fail)
         {
@@ -466,9 +475,11 @@ public class BattleSystem : MonoBehaviour
             case 1:
             case 2:
             case 3:
+                state = BattleState.ESCAPED;
                 StartCoroutine(EndBattle());
                 break;
             default:
+                state = BattleState.ENEMYTURN;
                 dialogueText.text = "You failed to escape!";
                 StartCoroutine(EnemyTurn());
                 break;

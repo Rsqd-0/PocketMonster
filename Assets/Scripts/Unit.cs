@@ -45,7 +45,14 @@ public class Unit : MonoBehaviour
     
     public bool TakeDamage(float damage)
     {
-        currentHp -= damage;
+        if (damage <= 0)
+        {
+            currentHp -= 1;
+        }
+        else
+        {
+            currentHp -= damage;
+        }
         
         if (currentHp <= 0)
         {
@@ -59,7 +66,15 @@ public class Unit : MonoBehaviour
     
     public void Heal(int amount)
     {
-        currentHp += amount;
+        if (amount <= 0)
+        {
+            currentHp += 1;
+        }
+        else
+        {
+            currentHp += amount;
+        }
+        
         if (currentHp > maxHp)
         {
             currentHp = maxHp;

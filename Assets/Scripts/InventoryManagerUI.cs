@@ -106,7 +106,7 @@ public class InventoryManagerUI : MonoBehaviour
                     break;
                 }
             }
-            Debug.Log("Lost");
+            Game.Instance.gameOver();
         }
         pokemonList.Clear();
         foreach (Transform child in parent2.transform)
