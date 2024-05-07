@@ -105,4 +105,9 @@ public class Game : MonoBehaviour
         Instance.overworldMusic.Play();
     }
     
+    public void gameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+    
 }
