@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollectableItem : MonoBehaviour
 {
     [SerializeField] private ItemSO item;
+    [SerializeField] private AudioSource lootSound;
     private Inventory inventory;
 
     private void Awake()
@@ -16,6 +17,7 @@ public class CollectableItem : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out PlayerMovement player))
         {
+            lootSound.Play();
             inventory.AddToInventory(item);
             Destroy(gameObject);
         }

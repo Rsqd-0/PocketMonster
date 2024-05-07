@@ -3282,6 +3282,37 @@ RectTransform:
   m_AnchoredPosition: {x: 320, y: -50}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &874740192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 874740193}
+  m_Layer: 0
+  m_Name: LootMusicPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &874740193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874740192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &874938993 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1442841292270541362, guid: f3160b51877bfef44a3d085cb6ae5246, type: 3}
@@ -4629,7 +4660,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426840111}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.47458237, y: -0.000000015145247, z: 0.000000008165845, w: 0.8802112}
+  m_LocalRotation: {x: 0.47458237, y: 0.000000015145247, z: -0.000000008165845, w: 0.8802112}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7364,3 +7395,4 @@ SceneRoots:
   - {fileID: 292012375}
   - {fileID: 337411554}
   - {fileID: 1054957115}
+  - {fileID: 874740193}

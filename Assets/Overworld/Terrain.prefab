@@ -176,6 +176,7 @@ Transform:
   - {fileID: 1409194332860546057}
   - {fileID: 6053259677627997564}
   - {fileID: 5821708058456109019}
+  - {fileID: 6045156711922704799}
   m_Father: {fileID: 8140489251183332276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5890883611605630527
@@ -3420,6 +3421,80 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1185680359699790952, guid: 1107c9572b88eaf4680e3ecfdb635341, type: 3}
+--- !u!1001 &2558278243445989537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5404774361117355580}
+    m_Modifications:
+    - target: {fileID: 2799208708541005309, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973917755339149228, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_Name
+      value: Energizing Potion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973917755339149228, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481815721746357035, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 889d4e7f5ed0fa04598f364dd97e4b5a, type: 2}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+--- !u!4 &6045156711922704799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8098706341084643646, guid: b9d18878d50635b429208856d952e2fd, type: 3}
+  m_PrefabInstance: {fileID: 2558278243445989537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2572901235259724192
 PrefabInstance:
   m_ObjectHideFlags: 0
