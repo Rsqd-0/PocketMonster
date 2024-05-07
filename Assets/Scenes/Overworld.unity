@@ -246,7 +246,7 @@ PrefabInstance:
     - target: {fileID: 6455522674303189070, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
       propertyPath: pokemons.Array.data[0]
       value: 
-      objectReference: {fileID: 1053875630}
+      objectReference: {fileID: 147942182}
     - target: {fileID: 6455522674303189070, guid: 6e948cd1452e2ea45beb84a72171234d, type: 3}
       propertyPath: items.Array.data[2].item
       value: 
@@ -405,6 +405,78 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ba3c5665c49fc34fafade306bd693fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &147942181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -70.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219947907830459507, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293674575643410586, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919806437151821024, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+      propertyPath: m_Name
+      value: PokemonArcaneA
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+--- !u!114 &147942182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 650612012588890836, guid: ea8b6c8c5ae456541b0ea06b4c16ba66, type: 3}
+  m_PrefabInstance: {fileID: 147942181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da33bba0225329c4b9ab86101014a440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &170497029 stripped
@@ -899,7 +971,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502767977}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5257311, y: 0.000000021954929, z: -0.00000001356889, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: -0.000000021954936, z: 0.000000013568895, w: 0.85065085}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1278,78 +1350,6 @@ Transform:
   - {fileID: 1644399144}
   m_Father: {fileID: 2071482543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &973061415
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -70.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 285736440949844265, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3480822376170080698, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_Name
-      value: PokemonTimeA
-      objectReference: {fileID: 0}
-    - target: {fileID: 4079931572078118336, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
---- !u!114 &1053875630 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4792015949408665486, guid: a38326fcd7fae1349a249c4e4296e533, type: 3}
-  m_PrefabInstance: {fileID: 973061415}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da33bba0225329c4b9ab86101014a440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1294124245 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5175899446305383548, guid: f3160b51877bfef44a3d085cb6ae5246, type: 3}
@@ -1515,7 +1515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426840111}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.47458237, y: -0.000000015145247, z: 0.000000008165845, w: 0.8802112}
+  m_LocalRotation: {x: 0.47458237, y: 0.000000015145247, z: -0.000000008165845, w: 0.8802112}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1829,7 +1829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742209233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5257311, y: 0.000000043909864, z: -0.000000027137785, w: 0.85065085}
+  m_LocalRotation: {x: 0.5257311, y: -0.000000043909864, z: 0.000000027137785, w: 0.85065085}
   m_LocalPosition: {x: 4.22, y: 6, z: -8.8105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2856,5 +2856,5 @@ SceneRoots:
   - {fileID: 1438023126}
   - {fileID: 2363269}
   - {fileID: 2135296433}
-  - {fileID: 973061415}
+  - {fileID: 147942181}
   - {fileID: 1421374283}

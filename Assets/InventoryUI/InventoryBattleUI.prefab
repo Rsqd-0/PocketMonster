@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227c41ea9f761f74dbda043bbd570b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battle: {fileID: 0}
+  battleUI: {fileID: 0}
   parent: {fileID: 4401889325507331575}
   inventoryMenu: {fileID: 5256039647607043345}
   itemList: []
@@ -477,7 +479,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: -400
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
