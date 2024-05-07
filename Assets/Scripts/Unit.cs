@@ -92,6 +92,13 @@ public class Unit : MonoBehaviour
         }
     }
     
+    public void ResetBuff()
+    {
+        buffCounter = 0;
+        atk = baseAtk;
+        def = baseDef;
+    }
+    
     
 }
 ;

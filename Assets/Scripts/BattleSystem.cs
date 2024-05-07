@@ -131,6 +131,8 @@ public class BattleSystem : MonoBehaviour
         }
         playerGO.transform.position = SaveData.GetPokemonPosition();
         inventoryManagerUI.UpdatePokemonList();
+        playerUnit.ResetBuff();
+        enemyUnit.ResetBuff();
         //Reset Buffs/Debuffs
         Game.CursorInvisible();
     }
@@ -169,7 +171,7 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator PlayerHeal()
     {
-        playerUnit.Heal(playerUnit.def + Random.Range(-3,4));
+        playerUnit.Heal(playerUnit.def / 2 + Random.Range(-3,4));
         playerHUD.SetHP(playerUnit.currentHp);
         dialogueText.text = "You feel renewed strength!";
 
@@ -319,7 +321,7 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     IEnumerator EnemyHeal()
     {
-        enemyUnit.Heal(enemyUnit.def + Random.Range(-3,4));
+        enemyUnit.Heal(enemyUnit.def / 2 + Random.Range(-3,4));
         enemyHUD.SetHP(enemyUnit.currentHp);
         
         dialogueText.text = enemyUnit.pokeName + " heals!";
