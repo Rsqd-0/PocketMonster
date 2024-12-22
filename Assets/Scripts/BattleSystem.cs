@@ -140,7 +140,7 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "You were defeated!";
                 yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(false);
-                character.transform.position = SaveData.GetCharacterPosition();
+                character.gameObject.transform.position = SaveData.GetCharacterPosition();
                 enemyChild.position = enemyGO.transform.position;
                 pokemonOverworld.enabled = true;
                 pokemonOverworld.StartMovement();
@@ -151,7 +151,7 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "You ran away!";
                 yield return new WaitForSeconds(1f);
                 SaveData.SetPlayerWon(false);
-                character.transform.position = SaveData.GetCharacterPosition();
+                character.gameObject.transform.position = SaveData.GetCharacterPosition();
                 enemyChild.position = enemyGO.transform.position;
                 pokemonOverworld.enabled = true;
                 pokemonOverworld.StartMovement();
@@ -524,6 +524,8 @@ public class BattleSystem : MonoBehaviour
             case Type.Cosmic when defender.type == Type.Time:
             case Type.Arcane when defender.type == Type.Cosmic:
                 return 0.8f;
+            case Type.Universe:
+                return 1.2f;
             default:
                 return 1f;
         }

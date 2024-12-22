@@ -106,6 +106,7 @@ public class Game : MonoBehaviour
     
     public void gameOver()
     {
+        CursorVisible();
         SceneManager.LoadScene("GameOver");
     }
     
